@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GIFAA — Grupo de Investigación en Física y Aprendizaje Automático | Universidad de Panamá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#05060b;
+    --ink:#e9eefb;
+    --muted:#8f9cba;
+    --cyan:#3fe0ff;
+    --violet:#9a6bff;
+    --lime:#7cf7c4;
+    --line:rgba(255,255,255,.09);
+    --card:rgba(255,255,255,.035);
+    --card-hi:rgba(255,255,255,.07);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- Fondo ambiental ---------- */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(900px 700px at 12% -10%, rgba(63,224,255,.13), transparent 62%),
+      radial-gradient(800px 700px at 92% 8%, rgba(154,107,255,.15), transparent 60%),
+      radial-gradient(900px 800px at 50% 108%, rgba(124,247,196,.07), transparent 62%),
+      #05060b;
+  }
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+    background-size:72px 72px;
+    mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
+    -webkit-mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
+  }
+
+  /* ---------- Barra de progreso ---------- */
+  #progress{
+    position:fixed;top:0;left:0;height:2px;width:0%;
+    background:linear-gradient(90deg,var(--cyan),var(--violet),var(--lime));
+    z-index:100;
+    box-shadow:0 0 18px rgba(63,224,255,.6);
+    transition:width .12s linear;
+  }
+
+  /* ---------- Estructura ---------- */
+  .scene{
+    position:relative;
+    padding:clamp(80px,12vh,150px) clamp(20px,5vw,60px);
+  }
+  .wrap{max-width:1180px;margin:0 auto;width:100%;}
+
+  /* ---------- Animaciones de entrada ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(46px) scale(.985);
+    filter:blur(6px);
+    transition:
+      opacity 1s cubic-bezier(.16,1,.3,1),
+      transform 1.1s cubic-bezier(.16,1,.3,1),
+      filter 1s cubic-bezier(.16,1,.3,1);
+    transition-delay:var(--d,0s);
+    will-change:opacity,transform;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:none;
+    filter:blur(0);
+  }
+
+  /* ---------- Tipografía ---------- */
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;line-height:1.12;letter-spacing:-.025em;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    display:flex;align-items:center;gap:.75rem;
+    margin-bottom:1.1rem;
+  }
+  .eyebrow::before{
+    content:"";width:34px;height:1px;
+    background:linear-gradient(90deg,var(--cyan),transparent);
+  }
+
+  .scene-title{
+    font-size:clamp(1.9rem,4.4vw,3.1rem);
+    margin-bottom:1rem;
+    max-width:20ch;
+  }
+  .scene-lead{
+    color:var(--muted);
+    font-size:clamp(1rem,1.5vw,1.12rem);
+    max-width:70ch;
+    margin-bottom:clamp(2.4rem,5vw,3.6rem);
+  }
+  .grad{
+    background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--lime));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* ---------- HERO ---------- */
+  #hero{
+    min-height:100svh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding-top:clamp(90px,14vh,150px);
+    padding-bottom:clamp(70px,10vh,110px);
+    overflow:hidden;
+  }
+  .hero-uni{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;
+    margin-bottom:2.2rem;
+  }
+  .hero-uni span.dot{color:var(--violet);}
+
+  .hero-title{
+    font-size:clamp(3.6rem,13vw,9rem);
+    font-weight:700;
+    letter-spacing:-.05em;
+    line-height:.92;
+    margin-bottom:.5rem;
+  }
+  .hero-title .letter{
+    display:inline-block;
+    background:linear-gradient(180deg,#ffffff 10%,#8fa4ff 60%,var(--violet) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(1.05rem,2.6vw,1.85rem);
+    font-weight:400;
+    color:#c3cee8;
+    letter-spacing:-.015em;
+    max-width:24ch;
+    margin-bottom:1.6rem;
+  }
+  .hero-tag{
+    color:var(--muted);
+    max-width:52ch;
+    font-size:clamp(.95rem,1.4vw,1.05rem);
+    margin-bottom:2.6rem;
+  }
+  .hero-tag em{color:var(--ink);font-style:normal;font-weight:500;}
+
+  .hero-chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:3rem;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;letter-spacing:.09em;
+    padding:.42rem .8rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:#b9c6e4;
+    background:rgba(255,255,255,.025);
+    backdrop-filter:blur(8px);
+    transition:.35s ease;
+  }
+  .chip:hover{
+    border-color:rgba(63,224,255,.5);
+    color:#fff;
+    background:rgba(63,224,255,.08);
+    transform:translateY(-2px);
+  }
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:.92rem;font-weight:500;
+    padding:.85rem 1.6rem;
+    border-radius:999px;
+    text-decoration:none;
+    transition:.4s cubic-bezier(.16,1,.3,1);
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(100deg,var(--cyan),var(--violet));
+    color:#06070d;
+    box-shadow:0 8px 40px -12px rgba(99,140,255,.85);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 48px -12px rgba(99,140,255,1);}
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--ink);
+    background:rgba(255,255,255,.03);
+  }
+  .btn-ghost:hover{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.07);transform:translateY(-3px);}
+
+  .scroll-hint{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    font-family:'JetBrains Mono',monospace;font-size:.62rem;
+    letter-spacing:.24em;text-transform:uppercase;color:#5d6a88;
+    display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  }
+  .scroll-hint .bar{
+    width:1px;height:44px;
+    background:linear-gradient(180deg,transparent,var(--cyan),transparent);
+    animation:drop 2.1s ease-in-out infinite;
+  }
+  @keyframes drop{
+    0%,100%{opacity:.25;transform:scaleY(.55);}
+    50%{opacity:1;transform:scaleY(1);}
+  }
+
+  /* orbes */
+  .orb{
+    position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;z-index:-1;
+  }
+  .orb-1{width:420px;height:420px;background:radial-gradient(circle,#1f6cff,transparent 70%);top:-8%;right:-6%;animation:float1 18s ease-in-out infinite;}
+  .orb-2{width:340px;height:340px;background:radial-gradient(circle,#8b5cf6,transparent 70%);bottom:2%;left:-8%;animation:float2 22s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,50px) scale(1.12);}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(50px,-40px) scale(1.1);}}
+
+  /* ---------- Tarjetas de oportunidad ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:clamp(14px,1.6vw,22px);
+  }
+  .card{
+    position:relative;
+    padding:clamp(24px,2.6vw,34px);
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:var(--card);
+    backdrop-filter:blur(14px);
+    overflow:hidden;
+    transition:transform .55s cubic-bezier(.16,1,.3,1),border-color .45s,background .45s,box-shadow .55s;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(420px 220px at 15% 0%,rgba(63,224,255,.16),transparent 70%);
+    opacity:0;transition:opacity .55s;
+    pointer-events:none;
+  }
+  .card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(63,224,255,.32);
+    background:var(--card-hi);
+    box-shadow:0 26px 60px -30px rgba(63,224,255,.55);
+  }
+  .card:hover::before{opacity:1;}
+
+  .card-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.16em;
+    color:var(--cyan);
+    display:block;margin-bottom:1rem;
+    opacity:.85;
+  }
+  .card h3{
+    font-size:1.16rem;
+    margin-bottom:1rem;
+    letter-spacing:-.02em;
+    position:relative;
+  }
+  .card p{
+    font-size:.92rem;
+    color:var(--muted);
+    margin-bottom:.85rem;
+    position:relative;
+  }
+  .card p:last-child{margin-bottom:0;}
+  .card strong{color:#cdd8f2;font-weight:500;}
+  .tag-inline{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.74rem;
+    color:var(--lime);
+    background:rgba(124,247,196,.09);
+    border:1px solid rgba(124,247,196,.18);
+    padding:.06rem .38rem;
+    border-radius:5px;
+    white-space:nowrap;
+  }
+
+  .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--violet);
+    display:block;margin-bottom:.4rem;
+  }
+
+  /* ---------- Lista numerada (políticas) ---------- */
+  .policy-list{display:grid;gap:clamp(14px,1.6vw,20px);}
+  .policy{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:clamp(16px,2.4vw,30px);
+    padding:clamp(22px,2.6vw,32px);
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(120deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    transition:border-color .45s,transform .55s cubic-bezier(.16,1,.3,1),background .45s;
+  }
+  .policy:hover{
+    border-color:rgba(154,107,255,.35);
+    transform:translateX(6px);
+    background:linear-gradient(120deg,rgba(154,107,255,.09),rgba(255,255,255,.012));
+  }
+  .policy .idx{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(1.7rem,3.4vw,2.4rem);
+    font-weight:700;
+    line-height:1;
+    background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(154,107,255,.55));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    min-width:1.8ch;
+  }
+  .policy h3{font-size:1.06rem;margin-bottom:.55rem;letter-spacing:-.015em;}
+  .policy p{font-size:.92rem;color:var(--muted);}
+  .policy ul{list-style:none;display:grid;gap:.42rem;margin-top:.6rem;}
+  .policy ul li{
+    font-size:.88rem;color:var(--muted);
+    padding-left:1.1rem;position:relative;
+  }
+  .policy ul li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:5px;height:5px;border-radius:50%;
+    background:var(--cyan);opacity:.7;
+  }
+
+  /* ---------- UP opportunities (5) ---------- */
+  .up-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:clamp(14px,1.6vw,20px);
+  }
+  .up-card{
+    padding:clamp(22px,2.5vw,30px);
+    border-radius:18px;
+    border:1px solid var(--line);
+    background:var(--card);
+    backdrop-filter:blur(12px);
+    transition:.55s cubic-bezier(.16,1,.3,1);
+    position:relative;
+    overflow:hidden;
+  }
+  .up-card::after{
+    content:"";
+    position:absolute;left:0;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg,var(--cyan),var(--violet));
+    transform:scaleY(0);transform-origin:top;
+    transition:transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .up-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.2);background:var(--card-hi);}
+  .up-card:hover::after{transform:scaleY(1);}
+  .up-card h3{font-size:1.04rem;margin-bottom:.8rem;}
+  .up-card ul{list-style:none;display:grid;gap:.5rem;}
+  .up-card li{
+    font-size:.88rem;color:var(--muted);
+    padding-left:1rem;position:relative;
+  }
+  .up-card li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:4px;height:4px;border-radius:50%;background:var(--lime);opacity:.8;
+  }
+
+  /* ---------- Identidad del grupo ---------- */
+  .identity{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:clamp(14px,1.8vw,22px);
+    margin-bottom:clamp(28px,4vw,44px);
+  }
+  .id-block{
+    padding:clamp(22px,2.6vw,30px);
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:var(--card);
+  }
+  .id-block h4{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--cyan);margin-bottom:.7rem;font-weight:500;
+  }
+  .id-block .value{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.05rem;color:#dfe7fa;font-weight:500;letter-spacing:-.01em;
+  }
+  .id-block .sub{font-size:.84rem;color:var(--muted);margin-top:.25rem;}
+
+  .lines{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:12px;
+  }
+  .line-item{
+    display:flex;align-items:flex-start;gap:.8rem;
+    padding:18px 20px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,.025);
+    font-size:.9rem;color:#cdd8f2;
+    transition:.45s cubic-bezier(.16,1,.3,1);
+  }
+  .line-item:hover{
+    border-color:rgba(63,224,255,.35);
+    background:rgba(63,224,255,.07);
+    transform:translateY(-4px);
+  }
+  .line-item .bul{
+    width:8px;height:8px;border-radius:50%;
+    background:linear-gradient(135deg,var(--cyan),var(--violet));
+    margin-top:.42em;flex-shrink:0;
+    box-shadow:0 0 12px rgba(63,224,255,.7);
+  }
+
+  .mv-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:clamp(14px,1.8vw,22px);
+    margin-top:clamp(22px,3vw,32px);
+  }
+  .mv{
+    padding:clamp(24px,2.8vw,34px);
+    border-radius:20px;
+    border:1px solid var(--line);
+    background:linear-gradient(150deg,rgba(63,224,255,.07),rgba(154,107,255,.05) 55%,transparent);
+    position:relative;overflow:hidden;
+  }
+  .mv::before{
+    content:"";position:absolute;top:-40%;right:-20%;
+    width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle,rgba(154,107,255,.28),transparent 70%);
+    filter:blur(30px);
+  }
+  .mv h4{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--violet);margin-bottom:.9rem;font-weight:500;
+    position:relative;
+  }
+  .mv p{font-size:.98rem;color:#c9d4ec;position:relative;}
+
+  /* ---------- Miembros ---------- */
+  .members{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:clamp(14px,1.6vw,20px);
+  }
+  .member{
+    padding:clamp(22px,2.5vw,28px);
+    border-radius:18px;
+    border:1px solid var(--line);
+    background:var(--card);
+    transition:.55s cubic-bezier(.16,1,.3,1);
+    position:relative;overflow:hidden;
+  }
+  .member:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,255,255,.2);
+    background:var(--card-hi);
+  }
+  .avatar{
+    width:46px;height:46px;border-radius:14px;
+    display:grid;place-items:center;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;
+    color:#06070d;
+    margin-bottom:1.1rem;
+    background:linear-gradient(135deg,var(--cyan),var(--violet));
+  }
+  .avatar.tbd{
+    background:rgba(255,255,255,.06);
+    color:#6f7d9b;
+    border:1px dashed rgba(255,255,255,.18);
+  }
+  .member .m-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1rem;font-weight:500;color:#e6ecfa;
+    margin-bottom:.35rem;letter-spacing:-.01em;
+  }
+  .member .m-role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--cyan);margin-bottom:.75rem;
+  }
+  .member .m-detail{font-size:.83rem;color:var(--muted);line-height:1.55;}
+  .member .m-detail b{color:#b9c6e4;font-weight:500;}
+
+  /* ---------- Requisitos ---------- */
+  .req-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:12px;
+    counter-reset:req;
+  }
+  .req{
+    counter-increment:req;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:14px;
+    padding:18px 20px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,.022);
+    transition:.45s ease;
+  }
+  .req:hover{border-color:rgba(124,247,196,.3);background:rgba(124,247,196,.05);}
+  .req::before{
+    content:counter(req,decimal-leading-zero);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    color:var(--lime);
+    padding-top:.28em;
+    letter-spacing:.05em;
+  }
+  .req p{font-size:.87rem;color:#b6c2dd;}
+
+  /* ---------- Plan de trabajo ---------- */
+  .flow{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:stretch;
+    gap:14px;
+    margin-top:clamp(20px,3vw,32px);
+  }
+  .flow-group{
+    flex:1 1 380px;
+    padding:clamp(20px,2.4vw,28px);
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:rgba(255,255,255,.022);
+    position:relative;
+  }
+  .flow-group > .gtitle{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--violet);margin-bottom:1.2rem;display:block;
+  }
+  .steps{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .step{
+    flex:1 1 150px;
+    padding:16px 18px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.1);
+    background:linear-gradient(135deg,rgba(63,224,255,.1),rgba(154,107,255,.07));
+    font-size:.86rem;color:#d3dcf2;
+  }
+  .step .dur{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.64rem;letter-spacing:.1em;
+    color:var(--cyan);margin-top:.4rem;
+  }
+  .arrow{
+    color:rgba(255,255,255,.32);
+    font-size:1.15rem;
+    flex:0 0 auto;
+  }
+  .step.tbd{
+    background:rgba(255,255,255,.03);
+    border-style:dashed;
+    color:#7d8bab;
+  }
+  .step.tbd .dur{color:#6a779a;}
+
+  .note{
+    margin-top:1.6rem;
+    padding:16px 20px;
+    border-left:2px solid var(--violet);
+    background:rgba(154,107,255,.06);
+    border-radius:0 12px 12px 0;
+    font-size:.88rem;
+    color:#b7c3de;
+  }
+
+  /* ---------- CTA final ---------- */
+  #join{
+    text-align:center;
+    padding-bottom:clamp(90px,14vh,150px);
+  }
+  #join .scene-title{margin-left:auto;margin-right:auto;max-width:22ch;}
+  #join .scene-lead{margin-left:auto;margin-right:auto;text-align:center;}
+  .join-box{
+    max-width:820px;
+    margin:0 auto;
+    padding:clamp(34px,5vw,60px) clamp(24px,4vw,50px);
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,.12);
+    background:
+      radial-gradient(600px 300px at 50% 0%,rgba(63,224,255,.14),transparent 70%),
+      linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
+    backdrop-filter:blur(16px);
+    position:relative;
+    overflow:hidden;
+  }
+  .join-box::after{
+    content:"";
+    position:absolute;bottom:-50%;left:50%;transform:translateX(-50%);
+    width:520px;height:320px;border-radius:50%;
+    background:radial-gradient(circle,rgba(154,107,255,.22),transparent 70%);
+    filter:blur(40px);
+    pointer-events:none;
+  }
+  .join-box h2{font-size:clamp(1.8rem,4vw,2.7rem);margin-bottom:1rem;position:relative;}
+  .join-box p{color:var(--muted);max-width:56ch;margin:0 auto 2rem;font-size:.98rem;position:relative;}
+  .coord{
+    display:inline-flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.08em;
+    color:#8593b3;
+    padding:.9rem 1.4rem;
+    border:1px dashed rgba(255,255,255,.16);
+    border-radius:14px;
+    margin-bottom:2rem;
+    position:relative;
+  }
+  .coord b{color:var(--cyan);font-weight:500;}
+
+  footer{
+    padding:clamp(30px,5vw,50px) clamp(20px,5vw,60px);
+    border-top:1px solid var(--line);
+    text-align:center;
+    font-size:.78rem;
+    color:#5c6884;
+  }
+  footer .f-brand{
+    font-family:'Space Grotesk',sans-serif;
+    color:#9aa8c6;
+    letter-spacing:.02em;
+    margin-bottom:.4rem;
+  }
+
+  @media (max-width:640px){
+    .policy{grid-template-columns:1fr;}
+    .policy .idx{font-size:1.4rem;}
+    .scroll-hint{display:none;}
+    .hero-sub{max-width:100%;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;filter:none;transition:none;}
+    .orb{animation:none;}
+    html{scroll-behavior:auto;}
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ══════════════ ESCENA 0 · HERO ══════════════ -->
+<section class="scene" id="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="wrap">
+    <div class="hero-uni reveal" style="--d:.05s">
+      Universidad de Panamá <span class="dot">·</span> Facultad de Ciencias Naturales, Exactas y Tecnología <span class="dot">·</span> Departamento de Física
+    </div>
+
+    <h1 class="hero-title reveal" style="--d:.15s">
+      <span class="letter">G</span><span class="letter">I</span><span class="letter">F</span><span class="letter">A</span><span class="letter">A</span>
+    </h1>
+
+    <p class="hero-sub reveal" style="--d:.3s">Grupo de Investigación en Física y Aprendizaje Automático</p>
+
+    <p class="hero-tag reveal" style="--d:.42s">
+      Un espacio para estudiantes, docentes e investigadores que quieren hacer avanzar la frontera
+      entre el <em>machine learning</em> y la física. Descubre por qué Panamá —y la Universidad de Panamá—
+      están en el lugar correcto, en el momento correcto.
+    </p>
+
+    <div class="hero-chips reveal" style="--d:.54s">
+      <span class="chip">PINNs</span>
+      <span class="chip">FNO · DeepONet</span>
+      <span class="chip">MACE · Allegro</span>
+      <span class="chip">PyTorch · JAX · DeepXDE</span>
+      <span class="chip">Scientific ML</span>
+    </div>
+
+    <div class="cta-row reveal" style="--d:.66s">
+      <a href="#panama" class="btn btn-primary">Explorar la oportunidad →</a>
+      <a href="#join" class="btn btn-ghost">Quiero unirme</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Desliza</span>
+    <span class="bar"></span>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 1 · PANAMÁ ══════════════ -->
+<section class="scene" id="panama">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">01 — El contexto</div>
+      <h2 class="scene-title">¿Por qué <span class="grad">Panamá</span>?</h2>
+      <p class="scene-lead">
+        Panamá cuenta con un posicionamiento geoestratégico e institucional idóneo para desarrollar
+        investigaciones y aplicaciones prácticas en la intersección del aprendizaje automático
+        (<em>Machine Learning</em>, ML) y la física, vinculándose de manera directa con las políticas
+        públicas de innovación científica e inteligencia artificial del país.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card reveal" style="--d:.05s">
+        <span class="card-num">01 / HIDROLOGÍA</span>
+        <h3>Gestión hídrica, hidrología y cuencas hidrográficas</h3>
+        <span class="label">Aplicación</span>
+        <p>
+          El Canal de Panamá y la cuenca hidrográfica dependen críticamente de la disponibilidad de agua
+          y de la gestión de fenómenos climáticos extremos. Las Ecuaciones de Aguas Someras
+          (<em>Shallow Water Equations</em>) y los modelos hidrológicos pueden simularse en tiempo real
+          utilizando <strong>operadores neuronales</strong> (como
+          <span class="tag-inline">FNO</span> <span class="tag-inline">DeepONet</span>).
+        </p>
+        <span class="label">Ventaja</span>
+        <p>
+          Estas redes actúan como modelos sustitutos (<em>surrogates</em>) acelerando miles de veces las
+          simulaciones numéricas tradicionales, lo que permite predecir niveles de embalses, escorrentía
+          e inundaciones bajo distintos escenarios de cambio climático casi de forma instantánea.
+        </p>
+      </article>
+
+      <article class="card reveal" style="--d:.14s">
+        <span class="card-num">02 / FLUIDOS</span>
+        <h3>Logística, ingeniería marítima y dinámica de fluidos (CFD)</h3>
+        <span class="label">Aplicación</span>
+        <p>
+          La optimización hidrodinámica del tránsito de buques, el flujo de agua en el sistema de esclusas
+          y la dispersión de contaminantes en las costas panameñas pueden abordarse mediante
+          <strong>redes neuronales informadas por la física</strong> <span class="tag-inline">PINNs</span>
+          y modelos de fluidos.
+        </p>
+        <span class="label">Ventaja</span>
+        <p>
+          A través de iniciativas como el Centro de Investigación y Confiabilidad del Agua
+          (<strong>CITEC</strong>) impulsado por el Canal de Panamá, se pueden desarrollar simulaciones
+          hídricas e hidrodinámicas de alta fidelidad con bajo costo computacional.
+        </p>
+      </article>
+
+      <article class="card reveal" style="--d:.23s">
+        <span class="card-num">03 / MATERIALES</span>
+        <h3>Microelectrónica y semiconductores</h3>
+        <span class="label">Aplicación</span>
+        <p>
+          Dentro de los planes de inserción de Panamá en la cadena de valor global de semiconductores
+          (ensamblaje, empaquetado y prueba), el diseño de nuevos materiales requiere simular la
+          dinámica atómica de materiales térmicos y conductores.
+        </p>
+        <span class="label">Ventaja</span>
+        <p>
+          El uso de <strong>potenciales interatómicos basados en ML equivariante</strong>
+          (<span class="tag-inline">Allegro</span> <span class="tag-inline">MACE</span>) permite modelar
+          la disipación térmica y las propiedades mecánicas de nuevos componentes a nivel atómico con
+          precisión cuántica, pero a una fracción del costo de la Teoría del Funcional de la Densidad
+          (DFT).
+        </p>
+      </article>
+
+      <article class="card reveal" style="--d:.32s">
+        <span class="card-num">04 / SALUD</span>
+        <h3>Biomedicina y descubrimiento de fármacos</h3>
+        <span class="label">Aplicación</span>
+        <p>
+          La caracterización de moléculas derivadas de la biodiversidad panameña y la simulación de
+          interacciones proteína-ligando.
+        </p>
+        <span class="label">Ventaja</span>
+        <p>
+          Institutos como <strong>INDICASAT AIP</strong> y la Universidad Tecnológica de Panamá
+          (<strong>UTP</strong>) pueden emplear arquitecturas equivariantes para dinamizar el
+          descubrimiento de fármacos y biomoléculas para enfermedades tropicales.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 2 · POLÍTICAS PÚBLICAS ══════════════ -->
+<section class="scene" id="politicas">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">02 — Alineación estratégica</div>
+      <h2 class="scene-title">Relación con las <span class="grad">políticas públicas de IA</span> en Panamá</h2>
+      <p class="scene-lead">
+        La aplicación de la física al ML —y viceversa— se alinea con la agenda regulatoria y de
+        desarrollo tecnológico de Panamá.
+      </p>
+    </div>
+
+    <div class="policy-list">
+
+      <div class="policy reveal" style="--d:.05s">
+        <div class="idx">1</div>
+        <div>
+          <h3>Alineación con la Estrategia Nacional de IA (IA 2036) y la Agenda de Tecnologías Avanzadas</h3>
+          <ul>
+            <li>La Estrategia Nacional de IA (aprobada por el Consejo de Gabinete e impulsada por la SENACYT junto con la AIG y Georgia Tech Panamá) establece la meta de posicionar a Panamá como un hub regional confiable de innovación.</li>
+            <li>Promueve el uso de la IA para resolver problemas estructurales en sectores prioritarios como la gestión del agua, la logística, la salud y los semiconductores.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="policy reveal" style="--d:.14s">
+        <div class="idx">2</div>
+        <div>
+          <h3>Gobernanza de IA Confiable y Explicable (<em>Trustworthy AI</em>)</h3>
+          <ul>
+            <li>Uno de los desafíos normativos de los modelos de IA puramente basados en datos es su opacidad y su tendencia a generar resultados físicamente irrealistas al extrapolar.</li>
+            <li>La integración de restricciones físicas (leyes de conservación de masa, energía y momento) garantiza que los algoritmos operen dentro de límites físicamente válidos.</li>
+            <li>Esto cumple de forma intrínseca con las exigencias de auditabilidad y fiabilidad prescritas en la estrategia gubernamental.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="policy reveal" style="--d:.23s">
+        <div class="idx">3</div>
+        <div>
+          <h3>Sostenibilidad energética e infraestructura computacional</h3>
+          <ul>
+            <li>Las políticas públicas reconocen las limitaciones de infraestructura energética y capacidad de cómputo para entrenar grandes modelos de lenguaje (LLMs) masivos.</li>
+            <li>Los modelos de aprendizaje informado por la física y los operadores neuronales requieren significativamente menos datos de entrenamiento y reducen el consumo energético de las simulaciones.</li>
+            <li>Permiten desarrollar IA de alto impacto ajustada a las capacidades de los centros de cómputo locales (como los de INDICATIC AIP o la UTP).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="policy reveal" style="--d:.32s">
+        <div class="idx">4</div>
+        <div>
+          <h3>Desarrollo de talento humano especializado</h3>
+          <ul>
+            <li>La estrategia nacional prioriza la capacitación de fuerza laboral avanzada.</li>
+            <li>Fomentar líneas de investigación interdisciplinarias (física, matemáticas aplicadas e ingeniería de software) en programas académicos nacionales y pasantías de investigación fortalece las capacidades científicas y tecnológicas del país.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 3 · UP ══════════════ -->
+<section class="scene" id="up">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">03 — Nuestra casa</div>
+      <h2 class="scene-title">Oportunidades para la <span class="grad">Universidad de Panamá</span></h2>
+      <p class="scene-lead">
+        La declaración de la Inteligencia Artificial como área prioritaria en Panamá brinda al
+        Departamento de Física de la Universidad de Panamá (UP) una oportunidad estratégica para
+        posicionarse como líder en <strong>Física Computacional y Aprendizaje Automático Científico</strong>
+        (<em>Scientific ML</em>).
+      </p>
+    </div>
+
+    <div class="up-grid">
+
+      <article class="up-card reveal" style="--d:.05s">
+        <h3>1 · Modernización curricular y formación interdisciplinaria</h3>
+        <ul>
+          <li>Incorporar <em>Physics-Informed ML</em>: PINNs y operadores neuronales (FNO, DeepONet) en Física Computacional y en asignaturas de métodos matemáticos.</li>
+          <li>Crear maestrías, diplomados o especializaciones en IA Científica y Física Computacional en colaboración con la Facultad de Informática de la UP.</li>
+          <li>Capacitar en herramientas modernas: PyTorch, JAX y DeepXDE.</li>
+        </ul>
+      </article>
+
+      <article class="up-card reveal" style="--d:.13s">
+        <h3>2 · Líneas de investigación aplicadas a desafíos nacionales</h3>
+        <ul>
+          <li><b>Física de la Tierra, clima e hidrología:</b> modelos sustitutos con operadores neuronales para la cuenca del Canal de Panamá.</li>
+          <li><b>Materia condensada y semiconductores:</b> potenciales interatómicos equivariantes (MACE, Allegro) para materiales conductores y térmicos.</li>
+          <li><b>Física médica y dosimetría:</b> ML para reconstrucción de imágenes y optimización de dosis en radioterapia.</li>
+        </ul>
+      </article>
+
+      <article class="up-card reveal" style="--d:.21s">
+        <h3>3 · Apalancamiento de fondos de investigación (SENACYT)</h3>
+        <ul>
+          <li>Acceder a convocatorias de I+D e infraestructura científica priorizadas para proyectos de Inteligencia Artificial.</li>
+          <li>Obtener financiamiento para crear o actualizar un clúster de cómputo de alto rendimiento (HPC) enfocado en simulación física acelerada por ML.</li>
+        </ul>
+      </article>
+
+      <article class="up-card reveal" style="--d:.29s">
+        <h3>4 · Sinergias institucionales y liderazgo académico</h3>
+        <ul>
+          <li>Convenios de colaboración e intercambio de capacidad de cómputo con INDICATIC AIP, CITEC e INDICASAT AIP.</li>
+          <li>Aportar el enfoque riguroso de la física a las políticas públicas de IA, promoviendo algoritmos que respeten leyes de conservación.</li>
+        </ul>
+      </article>
+
+      <article class="up-card reveal" style="--d:.37s">
+        <h3>5 · Semilleros de investigación y tesis de grado</h3>
+        <ul>
+          <li>Crear grupos de trabajo estudiantiles orientados a resolver ecuaciones diferenciales parciales mediante redes profundas.</li>
+          <li>Simular sistemas físicos complejos como proyecto de tesis.</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 4 · EL GRUPO ══════════════ -->
+<section class="scene" id="grupo">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">04 — Quiénes somos</div>
+      <h2 class="scene-title">El <span class="grad">Grupo de Investigación</span></h2>
+      <p class="scene-lead">
+        GIFAA es el espacio donde la física y el aprendizaje automático se encuentran para producir
+        avances académicos y tecnológicos con impacto nacional.
+      </p>
+    </div>
+
+    <div class="identity">
+      <div class="id-block reveal" style="--d:.05s">
+        <h4>Nombre</h4>
+        <div class="value">Grupo de Investigación en Física y Aprendizaje Automático</div>
+      </div>
+      <div class="id-block reveal" style="--d:.1s">
+        <h4>Acrónimo</h4>
+        <div class="value">GIFAA</div>
+      </div>
+      <div class="id-block reveal" style="--d:.15s">
+        <h4>Unidad académica</h4>
+        <div class="value">Facultad de Ciencias Naturales, Exactas y Tecnología</div>
+        <div class="sub">Departamento de Física · Universidad de Panamá</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="--d:.2s">
+      <span class="label" style="margin-bottom:1rem;">Líneas de investigación</span>
+      <div class="lines">
+        <div class="line-item"><span class="bul"></span> Redes Neuronales basadas en la Física (<em>Physics-Informed Neural Networks</em>)</div>
+        <div class="line-item"><span class="bul"></span> Machine Learning aplicado a Física de Altas Energías</div>
+        <div class="line-item"><span class="bul"></span> Machine Learning aplicado a la Física de Materiales</div>
+        <div class="line-item"><span class="bul"></span> Machine Learning aplicado a la Mecánica de Fluidos</div>
+      </div>
+    </div>
+
+    <div class="mv-grid">
+      <div class="mv reveal" style="--d:.08s">
+        <h4>Misión</h4>
+        <p>
+          Ofrecer el mejor espacio para los estudiantes, docentes e investigadores con el interés en común
+          de realizar avances académicos y tecnológicos en la intersección entre el aprendizaje automático
+          (en inglés, <em>machine learning</em>) y física.
+        </p>
+      </div>
+      <div class="mv reveal" style="--d:.16s">
+        <h4>Visión</h4>
+        <p>
+          Ser la referencia académica regional en materia de machine learning aplicado a la física y
+          viceversa, así como desarrollar tecnologías punteras.
+        </p>
+      </div>
+      <div class="mv reveal" style="--d:.24s">
+        <h4>Objetivo general</h4>
+        <p>
+          Aprovechar el auge de la IA como área prioritaria en la República de Panamá para desarrollar
+          tecnologías e investigaciones innovadoras que contribuyan al posicionamiento de Panamá como
+          <em>Hub de Innovación</em> en la región.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 5 · COMPOSICIÓN ══════════════ -->
+<section class="scene" id="miembros">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">05 — El equipo</div>
+      <h2 class="scene-title">Composición y <span class="grad">conformación</span></h2>
+      <p class="scene-lead">
+        Un grupo fundado por estudiantes de la Licenciatura en Física de la Universidad de Panamá,
+        con espacios abiertos para nuevos integrantes.
+      </p>
+    </div>
+
+    <div class="members">
+
+      <article class="member reveal" style="--d:.05s">
+        <div class="avatar">DM</div>
+        <div class="m-name">Daniel Humberto Morales Jaén</div>
+        <div class="m-role">Miembro fundador · Estudiante</div>
+        <div class="m-detail">
+          <b>Grado:</b> Licenciatura<br>
+          <b>Institución:</b> Universidad de Panamá
+        </div>
+      </article>
+
+      <article class="member reveal" style="--d:.13s">
+        <div class="avatar tbd">GJ</div>
+        <div class="m-name">Gamal Jeridini</div>
+        <div class="m-role">Miembro fundador · Estudiante</div>
+        <div class="m-detail">
+          <b>Grado:</b> Licenciatura<br>
+          <b>Institución:</b> Universidad de Panamá
+        </div>
+      </article>
+
+      <article class="member reveal" style="--d:.21s">
+        <div class="avatar tbd">BP</div>
+        <div class="m-name">Brissa Pérez</div>
+        <div class="m-role">Miembro fundadora · Estudiante</div>
+        <div class="m-detail">
+          <b>Grado:</b> Licenciatura<br>
+          <b>Institución:</b> Universidad de Panamá
+        </div>
+      </article>
+
+      <article class="member reveal" style="--d:.29s">
+        <div class="avatar tbd">JA</div>
+        <div class="m-name">Julissa Aguilar</div>
+        <div class="m-role">Miembro fundadora · Estudiante</div>
+        <div class="m-detail">
+          <b>Grado:</b> Licenciatura<br>
+          <b>Institución:</b> Universidad de Panamá
+        </div>
+      </article>
+
+    </div>
+
+    <div class="note reveal" style="--d:.35s">
+      <strong>Coordinador:</strong> por definir. El grupo se encuentra en proceso de consolidación
+      y búsqueda de un profesor coordinador que lidere la ruta de investigación.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 6 · REQUISITOS ══════════════ -->
+<section class="scene" id="requisitos">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">06 — Cómo participar</div>
+      <h2 class="scene-title">Requisitos mínimos para <span class="grad">ser miembro</span></h2>
+      <p class="scene-lead">
+        No necesitas ser experto: necesitas bases sólidas, curiosidad y compromiso. Estos son los
+        criterios establecidos.
+      </p>
+    </div>
+
+    <div class="req-list">
+      <div class="req reveal" style="--d:.05s">
+        <p>Cumplir con lo dispuesto en el <b>Artículo 6</b> del Reglamento de los Grupos de Investigación (Aprobado en el Consejo de Investigación, REUNIÓN C.I.6-19 celebrada el día 21 de junio de 2019).</p>
+      </div>
+      <div class="req reveal" style="--d:.09s">
+        <p>Presentar una <b>solicitud escrita</b> al coordinador del grupo. Esta solicitud será sometida a consideración (votación/consenso) de los miembros actuales (Artículo 8 del Reglamento).</p>
+      </div>
+      <div class="req reveal" style="--d:.13s">
+        <p>Firmar el <b>acuerdo de confidencialidad</b>.</p>
+      </div>
+      <div class="req reveal" style="--d:.17s">
+        <p><b>Matemáticas:</b> dominio de Cálculo (diferencial e integral), Álgebra Lineal y Ecuaciones Diferenciales.</p>
+      </div>
+      <div class="req reveal" style="--d:.21s">
+        <p><b>Física:</b> conocimientos en materias ofrecidas en el primer y segundo año de la Licenciatura en Física de la Universidad de Panamá.</p>
+      </div>
+      <div class="req reveal" style="--d:.25s">
+        <p><b>Programación:</b> conocimientos básicos de Python u otro lenguaje de programación.</p>
+      </div>
+      <div class="req reveal" style="--d:.29s">
+        <p><b>Aprendizaje Automático y/o Ciencia de Datos:</b> conocimiento de estadística, probabilidad y algoritmos básicos de ML (regresión, clasificación, redes neuronales).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 7 · PLAN DE TRABAJO ══════════════ -->
+<section class="scene" id="plan">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">07 — La ruta</div>
+      <h2 class="scene-title">Plan de <span class="grad">trabajo</span></h2>
+      <p class="scene-lead">
+        Mientras se consigue un coordinador, la idea es establecer un plan de 12 meses para capacitarnos
+        y prepararnos para desarrollar investigaciones avanzadas.
+      </p>
+    </div>
+
+    <div class="flow reveal" style="--d:.08s">
+      <div class="flow-group">
+        <span class="gtitle">Aprendizaje</span>
+        <div class="steps">
+          <div class="step">
+            Aprender Python para Machine Learning
+            <span class="dur">3 meses</span>
+          </div>
+          <span class="arrow">→</span>
+          <div class="step">
+            Aprender Matemáticas para Machine Learning
+            <span class="dur">3 meses</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-group">
+        <span class="gtitle">Aplicación</span>
+        <div class="steps">
+          <div class="step tbd">
+            Establecer qué sigue…
+            <span class="dur">a definir por el coordinador</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note reveal" style="--d:.16s">
+      El coordinador establecerá cuál es la ruta más adecuada. Mientras tanto, nos centraremos en
+      aprender lo más que se pueda.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESCENA 8 · ÚNETE ══════════════ -->
+<section class="scene" id="join">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow" style="justify-content:center;">08 — Siguiente paso</div>
+      <h2 class="scene-title">¿Te sumas al <span class="grad">GIFAA</span>?</h2>
+      <p class="scene-lead">
+        Si te interesa la intersección entre la física y el aprendizaje automático, si quieres aprender
+        herramientas que están redefiniendo la investigación científica, o si simplemente quieres
+        aportar tu área de interés: este grupo tiene un lugar para ti.
+      </p>
+    </div>
+
+    <div class="join-box reveal" style="--d:.12s">
+      <h2>Construyamos la referencia regional</h2>
+      <p>
+        El grupo se encuentra en su etapa fundacional. Es el mejor momento para involucrarte:
+        las líneas de investigación, los proyectos y la ruta de aprendizaje todavía se están definiendo,
+        y cada nuevo miembro aporta a esa construcción.
+      </p>
+
+      <div class="coord">
+        <span>Coordinador: <b>POR DEFINIR</b></span>
+        <span>Contacto: <b>POR DEFINIR</b></span>
+      </div>
+
+      <div class="cta-row" style="justify-content:center;">
+        <a href="#requisitos" class="btn btn-primary">Revisar los requisitos →</a>
+        <a href="#grupo" class="btn btn-ghost">Volver a la información del grupo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-brand">GIFAA — Grupo de Investigación en Física y Aprendizaje Automático</div>
+  <div>Universidad de Panamá · Facultad de Ciencias Naturales, Exactas y Tecnología · Departamento de Física</div>
+</footer>
+
+<script>
+  /* ---------- Barra de progreso ---------- */
+  const progress = document.getElementById('progress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+    progress.style.width = (scrolled * 100) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
+  /* ---------- Reveal por scroll ---------- */
+  const items = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    items.forEach(el => io.observe(el));
+  } else {
+    items.forEach(el => el.classList.add('visible'));
+  }
+
+  /* ---------- Parallax suave en los orbes del hero ---------- */
+  const orbs = document.querySelectorAll('.orb');
+  const hero = document.getElementById('hero');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce && orbs.length) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > window.innerHeight * 1.2) return;
+      orbs.forEach((orb, i) => {
+        const factor = i === 0 ? 0.14 : -0.1;
+        orb.style.transform = `translateY(${y * factor}px)`;
+      });
+    }, {passive:true});
+  }
+</script>
+
+</body>
+</html>
