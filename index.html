@@ -15,6 +15,8 @@
     --cyan:#3fe0ff;
     --violet:#9a6bff;
     --lime:#7cf7c4;
+    --wa:#25d366;
+    --wa-dark:#1ebe5a;
     --line:rgba(255,255,255,.09);
     --card:rgba(255,255,255,.035);
     --card-hi:rgba(255,255,255,.07);
@@ -202,6 +204,7 @@
     text-decoration:none;
     transition:.4s cubic-bezier(.16,1,.3,1);
     border:1px solid transparent;
+    cursor:pointer;
   }
   .btn-primary{
     background:linear-gradient(100deg,var(--cyan),var(--violet));
@@ -215,6 +218,23 @@
     background:rgba(255,255,255,.03);
   }
   .btn-ghost:hover{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.07);transform:translateY(-3px);}
+
+  /* ---------- BOTÓN WHATSAPP ---------- */
+  .btn-whatsapp{
+    background:linear-gradient(100deg,var(--wa),var(--wa-dark));
+    color:#041d0d;
+    box-shadow:0 8px 40px -12px rgba(37,211,102,.9);
+    font-weight:600;
+  }
+  .btn-whatsapp:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 48px -12px rgba(37,211,102,1);
+  }
+  .btn-whatsapp svg{
+    width:18px;height:18px;
+    flex-shrink:0;
+    fill:currentColor;
+  }
 
   .scroll-hint{
     position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
@@ -636,6 +656,56 @@
   }
   .coord b{color:var(--cyan);font-weight:500;}
 
+  /* ---------- Botón flotante WhatsApp ---------- */
+  #wa-fab{
+    position:fixed;
+    bottom:clamp(18px,3vw,28px);
+    right:clamp(18px,3vw,28px);
+    z-index:99;
+    width:60px;height:60px;
+    border-radius:50%;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--wa),var(--wa-dark));
+    box-shadow:0 12px 32px -8px rgba(37,211,102,.8), 0 0 0 0 rgba(37,211,102,.5);
+    text-decoration:none;
+    transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s;
+    animation:wa-pulse 2.4s ease-out infinite;
+  }
+  #wa-fab:hover{
+    transform:scale(1.1) translateY(-3px);
+    box-shadow:0 18px 44px -8px rgba(37,211,102,1), 0 0 0 0 rgba(37,211,102,.5);
+  }
+  #wa-fab svg{
+    width:30px;height:30px;
+    fill:#ffffff;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));
+  }
+  #wa-fab .wa-tooltip{
+    position:absolute;
+    right:calc(100% + 12px);
+    top:50%;transform:translateY(-50%);
+    background:#0d1018;
+    border:1px solid rgba(255,255,255,.12);
+    color:var(--ink);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:.78rem;font-weight:500;
+    padding:.5rem .85rem;
+    border-radius:10px;
+    white-space:nowrap;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s ease,transform .3s ease;
+    box-shadow:0 8px 24px -8px rgba(0,0,0,.6);
+  }
+  #wa-fab:hover .wa-tooltip{
+    opacity:1;
+    transform:translateY(-50%) translateX(-4px);
+  }
+  @keyframes wa-pulse{
+    0%{box-shadow:0 12px 32px -8px rgba(37,211,102,.8), 0 0 0 0 rgba(37,211,102,.55);}
+    70%{box-shadow:0 12px 32px -8px rgba(37,211,102,.8), 0 0 0 18px rgba(37,211,102,0);}
+    100%{box-shadow:0 12px 32px -8px rgba(37,211,102,.8), 0 0 0 0 rgba(37,211,102,0);}
+  }
+
   footer{
     padding:clamp(30px,5vw,50px) clamp(20px,5vw,60px);
     border-top:1px solid var(--line);
@@ -655,11 +725,15 @@
     .policy .idx{font-size:1.4rem;}
     .scroll-hint{display:none;}
     .hero-sub{max-width:100%;}
+    #wa-fab{width:54px;height:54px;}
+    #wa-fab svg{width:26px;height:26px;}
+    #wa-fab .wa-tooltip{display:none;}
   }
 
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;filter:none;transition:none;}
     .orb{animation:none;}
+    #wa-fab{animation:none;}
     html{scroll-behavior:auto;}
     *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
   }
@@ -668,6 +742,16 @@
 <body>
 
 <div id="progress"></div>
+
+<!-- Botón flotante WhatsApp (FAB) -->
+<a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe"
+   target="_blank" rel="noopener noreferrer"
+   id="wa-fab" aria-label="Unirse al grupo de WhatsApp de GIFAA">
+  <span class="wa-tooltip">Únete al grupo de WhatsApp</span>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
 
 <!-- ══════════════ ESCENA 0 · HERO ══════════════ -->
 <section class="scene" id="hero">
@@ -700,6 +784,14 @@
 
     <div class="cta-row reveal" style="--d:.66s">
       <a href="#panama" class="btn btn-primary">Explorar la oportunidad →</a>
+      <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-whatsapp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Unirse al WhatsApp
+      </a>
       <a href="#join" class="btn btn-ghost">Quiero unirme</a>
     </div>
   </div>
@@ -1168,6 +1260,14 @@
       </div>
 
       <div class="cta-row" style="justify-content:center;">
+        <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Unirme al grupo de WhatsApp
+        </a>
         <a href="#requisitos" class="btn btn-primary">Revisar los requisitos →</a>
         <a href="#grupo" class="btn btn-ghost">Volver a la información del grupo</a>
       </div>
