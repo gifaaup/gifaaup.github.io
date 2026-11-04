@@ -4,104 +4,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Roadmap — GIFAA | Universidad de Panamá</title>
-  <meta name="description" content="Plan de trabajo y ruta de capacitación de 12 meses del Grupo de Investigación en Física y Aprendizaje Automático (GIFAA) de la Universidad de Panamá.">
+  <meta name="description" content="Plan de trabajo y hoja de ruta formal a 12 meses del Grupo de Investigación en Física y Aprendizaje Automático de la Universidad de Panamá.">
 
+  <!-- Tipografía oficial Space Grotesk, Inter y JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/main.css">
   <style>
-    .timeline {
+    .timeline-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 36px;
       position: relative;
-      margin: 40px 0;
-      padding-left: 36px;
     }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 10px;
-      bottom: 20px;
-      width: 3px;
-      background: linear-gradient(180deg, var(--crimson) 0%, var(--blue) 100%);
-      border-radius: 2px;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-    }
-    .timeline-node {
-      position: absolute;
-      left: -36px;
-      top: 6px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      border: 4px solid var(--navy);
-      box-shadow: 0 0 0 4px rgba(10, 42, 92, 0.15);
-    }
-    .timeline-item:nth-child(1) .timeline-node { border-color: var(--crimson); }
-    .timeline-item:nth-child(2) .timeline-node { border-color: #8C2F6E; }
-    .timeline-item:nth-child(3) .timeline-node { border-color: var(--blue); }
-    .timeline-item:nth-child(4) .timeline-node { border-color: var(--navy); }
-
-    .timeline-box {
-      background: #FFFFFF;
+    .timeline-phase {
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: 18px;
-      padding: 30px;
+      padding: 32px;
       box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 30px;
       transition: all 0.3s ease;
+      position: relative;
     }
-    .timeline-box:hover {
-      transform: translateX(4px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(10, 42, 92, 0.2);
+    .timeline-phase:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(10, 42, 92, 0.25);
     }
-    .timeline-header {
+    .phase-badge-wrap {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
+      flex-direction: column;
+      gap: 8px;
     }
-    .timeline-duration {
+    .phase-period {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--crimson);
-      background: var(--crimson-light);
-      padding: 4px 12px;
-      border-radius: 9999px;
+      text-transform: uppercase;
     }
-    .timeline-syllabus {
-      list-style: none;
-      display: grid;
-      gap: 8px;
-      margin: 16px 0;
+    .phase-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
     }
-    .timeline-syllabus li {
-      font-size: 0.92rem;
+    .phase-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .phase-content p {
       color: var(--text-muted);
-      position: relative;
-      padding-left: 20px;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 16px;
     }
-    .timeline-syllabus li::before {
-      content: "•";
-      position: absolute;
-      left: 4px;
+    .deliverables-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.92rem;
+    }
+    .deliverables-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-muted);
+    }
+    .deliverables-list li::before {
+      content: "✓";
       color: var(--blue);
-      font-weight: bold;
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .timeline-phase {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
   </style>
 </head>
 <body>
 
   <!-- ==========================================================================
-       BARRA DE NAVEGACIÓN SUPERIOR (new-brand-start.png)
+       BARRA DE NAVEGACIÓN SUPERIOR
        ========================================================================== -->
   <header class="site-header">
     <div class="nav-pill-wrapper">
@@ -113,16 +106,7 @@
             <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
             <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
             <g stroke="#0A2A5C" stroke-width="3">
-              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-              <circle cx="120" cy="54" r="9" fill="#005293"/>
-              <circle cx="120" cy="96" r="9" fill="#005293"/>
-              <circle cx="120" cy="144" r="9" fill="#005293"/>
-              <circle cx="120" cy="186" r="9" fill="#005293"/>
-              <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="188" cy="120" r="9" fill="#D21034"/>
-              <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/><circle cx="52" cy="120" r="9" fill="#FFFFFF"/><circle cx="52" cy="160" r="9" fill="#FFFFFF"/><circle cx="120" cy="54" r="9" fill="#005293"/><circle cx="120" cy="96" r="9" fill="#005293"/><circle cx="120" cy="144" r="9" fill="#005293"/><circle cx="120" cy="186" r="9" fill="#005293"/><circle cx="188" cy="80" r="9" fill="#FFFFFF"/><circle cx="188" cy="120" r="9" fill="#D21034"/><circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
             </g>
           </svg>
         </div>
@@ -132,26 +116,26 @@
         </div>
       </a>
 
-      <nav aria-label="Menú principal">
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="quienes-somos.html" class="nav-link">Quiénes somos</a></li>
-          <li class="nav-item"><a href="investigaciones.html" class="nav-link">Investigaciones</a></li>
-          <li class="nav-item"><a href="roadmap.html" class="nav-link active">Roadmap</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contactanos.html" class="nav-link">Contáctanos</a></li>
-          <li class="nav-item">
-            <a href="ingresar.html" class="nav-btn-ingresar">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-              Ingresar
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <!-- Menú Desktop -->
+      <div class="nav-menu-wrap">
+        <nav aria-label="Menú principal">
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="quienes-somos.html" class="nav-link">Quiénes somos</a></li>
+            <li class="nav-item"><a href="investigaciones.html" class="nav-link">Investigaciones</a></li>
+            <li class="nav-item"><a href="roadmap.html" class="nav-link active">Roadmap</a></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="ingresar.html" class="nav-link">Ingresar</a></li>
+            <li class="nav-item"><a href="contactanos.html" class="nav-link">Contáctanos</a></li>
+          </ul>
+        </nav>
+
+        <button class="theme-toggle-btn" aria-label="Cambiar tema">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
       <div class="mobile-nav" id="mobileNav">
@@ -160,238 +144,181 @@
           <li><a href="investigaciones.html" class="mobile-nav-link">Investigaciones</a></li>
           <li><a href="roadmap.html" class="mobile-nav-link active">Roadmap</a></li>
           <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+          <li><a href="ingresar.html" class="mobile-nav-link">Ingresar</a></li>
           <li><a href="contactanos.html" class="mobile-nav-link">Contáctanos</a></li>
-          <li><a href="ingresar.html" class="mobile-nav-link" style="color:var(--crimson); font-weight:700;">Ingresar al Portal</a></li>
         </ul>
+        <div class="mobile-nav-footer">
+          <span style="font-size:0.85rem; color:var(--text-muted);">Tema visual</span>
+          <button class="theme-toggle-btn" aria-label="Cambiar tema">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ==========================================================================
-       CABECERA DE PÁGINA
+       HERO DE ROADMAP
        ========================================================================== -->
   <main>
     <section class="page-hero">
       <div class="container">
-        <div class="section-eyebrow">Plan de Trabajo Estratégico</div>
-        <h1 class="section-title">Roadmap 12 Meses</h1>
-        <div class="brand-bars">
-          <span class="bar-red"></span>
-          <span class="bar-blue"></span>
-        </div>
-        <p class="section-lead">
-          Nuestra ruta estructurada para capacitar a los integrantes del grupo, asimilar herramientas de frontera y preparar publicaciones científicas y propuestas formales de financiamiento.
-        </p>
+        <div class="section-eyebrow">Planificación Estratégica</div>
+        <h1 class="section-title">Hoja de Ruta a 12 Meses</h1>
+        <p class="section-lead">Un cronograma formal estructurado en cuatro fases secuenciales para cimentar capacidades técnicas, consolidar semilleros y postular propuestas científicas a fondos nacionales.</p>
+        <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-       TIMELINE DE ETAPAS
-       ========================================================================== -->
     <section class="page-section" style="padding-top: 0;">
-      <div class="container container-narrow">
-        <div class="timeline">
-
-          <!-- Etapa 1 -->
-          <div class="timeline-item">
-            <div class="timeline-node"></div>
-            <div class="timeline-box">
-              <div class="timeline-header">
-                <div>
-                  <span class="badge badge-crimson">Fase 01 · Fundamentos</span>
-                  <h3 style="font-size:1.3rem; margin-top:4px;">Python y Computación Científica para ML</h3>
-                </div>
-                <span class="timeline-duration">Meses 1 – 3</span>
-              </div>
-              <p style="font-size:0.95rem; color:var(--text-main); line-height:1.6;">
-                Dominio de las herramientas computacionales esenciales para el modelado numérico y el cálculo tensorial en entornos de computación de alto rendimiento.
-              </p>
-              <ul class="timeline-syllabus">
-                <li>Ecosistema científico de Python: NumPy vectorial, SciPy (integración y solvers de EDOs) y visualización formal con Matplotlib/Seaborn.</li>
-                <li>Fundamentos de PyTorch y JAX: tensores, gestión de memoria en GPU y motores de diferenciación automática (AD).</li>
-                <li>Buenas prácticas de desarrollo científico: control de versiones Git, entornos reproducibles y benchmarking de rendimiento.</li>
-              </ul>
-              <div style="font-size:0.85rem; color:var(--slate); font-family:var(--font-mono);">
-                Meta entregable: Repositorio de algoritmos numéricos clásicos re-implementados en PyTorch.
-              </div>
+      <div class="container">
+        <div class="timeline-wrap">
+          <!-- Fase 1 -->
+          <article class="timeline-phase">
+            <div class="phase-badge-wrap">
+              <span class="phase-period">Meses 01 — 03</span>
+              <span class="phase-name">Fase 1: Fundamentos</span>
+              <span class="badge badge-navy">Nivelación</span>
             </div>
-          </div>
-
-          <!-- Etapa 2 -->
-          <div class="timeline-item">
-            <div class="timeline-node"></div>
-            <div class="timeline-box">
-              <div class="timeline-header">
-                <div>
-                  <span class="badge badge-navy">Fase 02 · Teoría Rigurosa</span>
-                  <h3 style="font-size:1.3rem; margin-top:4px;">Matemáticas Avanzadas para Machine Learning</h3>
-                </div>
-                <span class="timeline-duration">Meses 4 – 6</span>
-              </div>
-              <p style="font-size:0.95rem; color:var(--text-main); line-height:1.6;">
-                Profundización en las bases matemáticas requeridas para comprender la convergencia, estabilidad y formulación variacional de los modelos neuronales informados por la física.
+            <div class="phase-content">
+              <h3>Nivelación de Semillero e Infraestructura Computacional</h3>
+              <p>
+                Capacitación intensiva en Python para cálculo científico (NumPy, SciPy, PyTorch). Seminarios semanales de álgebra lineal numérica, optimización convexa y diferenciación automática. Puesta a punto de repositorios y entornos reproducibles.
               </p>
-              <ul class="timeline-syllabus">
-                <li>Álgebra lineal avanzada: Descomposición en Valores Singulares (SVD), análisis espectral, espacios funcionales y operadores lineales.</li>
-                <li>Cálculo multivariable y optimización: gradientes, Hessianos, multiplicadores de Lagrange, optimizadores L-BFGS y métodos de segundo orden.</li>
-                <li>Teoría de probabilidades, procesos estocásticos y estimación de incertidumbre bayesiana en física experimental.</li>
+              <ul class="deliverables-list">
+                <li>Ciclo de 6 talleres formativos abiertos para estudiantes de la Universidad de Panamá.</li>
+                <li>Implementación de pipelines de entrenamiento estándar en GPU institucional.</li>
+                <li>Benchmarking de bibliotecas de física informada (DeepXDE vs NeuralPDE).</li>
               </ul>
-              <div style="font-size:0.85rem; color:var(--slate); font-family:var(--font-mono);">
-                Meta entregable: Monografía interna de formulación matemática de redes neuronales continuas.
-              </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Etapa 3 -->
-          <div class="timeline-item">
-            <div class="timeline-node"></div>
-            <div class="timeline-box">
-              <div class="timeline-header">
-                <div>
-                  <span class="badge badge-blue">Fase 03 · Modelado Científico</span>
-                  <h3 style="font-size:1.3rem; margin-top:4px;">Physics-Informed ML y Operadores Neuronales</h3>
-                </div>
-                <span class="timeline-duration">Meses 7 – 9</span>
-              </div>
-              <p style="font-size:0.95rem; color:var(--text-main); line-height:1.6;">
-                Implementación rigurosa de las arquitecturas que resuelven ecuaciones diferenciales parciales (EDPs) continuas respetando leyes físicas.
+          <!-- Fase 2 -->
+          <article class="timeline-phase">
+            <div class="phase-badge-wrap">
+              <span class="phase-period">Meses 04 — 06</span>
+              <span class="phase-name">Fase 2: Prototipado</span>
+              <span class="badge badge-crimson">Aplicación</span>
+            </div>
+            <div class="phase-content">
+              <h3>Modelos Piloto en Desafíos Estratégicos Panameños</h3>
+              <p>
+                Formulación e implementación de los primeros modelos sustitutos (surrogates) para la cuenca hidrográfica del Canal de Panamá y flujo de fluidos con Fourier Neural Operators (FNO). Acoplamiento con datos sintéticos y reales de pluviometría.
               </p>
-              <ul class="timeline-syllabus">
-                <li>Arquitectura e implementación de PINNs con DeepXDE: condiciones iniciales y de frontera rígidas vs. suaves.</li>
-                <li>Operadores Neuronales de Fourier (FNO) y DeepONet: aprendizaje entre espacios de funciones de dimensión infinita.</li>
-                <li>Simulación de casos emblemáticos: Convección-difusión 1D/2D, Ecuaciones de Burgers y Navier-Stokes incompresible.</li>
+              <ul class="deliverables-list">
+                <li>Modelo PINN bidimensional validado para la ecuación de convección-difusión fluvial.</li>
+                <li>Primer prototipo de red neuronal de operadores para predicción de nivel de embalses.</li>
+                <li>Presentación de avances en seminarios del Departamento de Física.</li>
               </ul>
-              <div style="font-size:0.85rem; color:var(--slate); font-family:var(--font-mono);">
-                Meta entregable: Solver PINN validado contra soluciones numéricas tradicionales de elementos finitos.
-              </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Etapa 4 -->
-          <div class="timeline-item">
-            <div class="timeline-node"></div>
-            <div class="timeline-box">
-              <div class="timeline-header">
-                <div>
-                  <span class="badge badge-crimson">Fase 04 · Aplicación &amp; Impacto</span>
-                  <h3 style="font-size:1.3rem; margin-top:4px;">Líneas Aplicadas y Tesis de Grado</h3>
-                </div>
-                <span class="timeline-duration">Meses 10 – 12</span>
-              </div>
-              <p style="font-size:0.95rem; color:var(--text-main); line-height:1.6;">
-                Bajo la supervisión del profesor coordinador que se designe, se iniciarán los proyectos dirigidos con impacto en la realidad panameña.
+          <!-- Fase 3 -->
+          <article class="timeline-phase">
+            <div class="phase-badge-wrap">
+              <span class="phase-period">Meses 07 — 09</span>
+              <span class="phase-name">Fase 3: SENACYT</span>
+              <span class="badge badge-blue">Financiamiento</span>
+            </div>
+            <div class="phase-content">
+              <h3>Formulación de Proyectos de I+D y Artículos Científicos</h3>
+              <p>
+                Sometimiento formal de propuestas a convocatorias de financiamiento de la SENACYT (Fondo I+D, Convocatorias Nuevos Investigadores). Redacción del primer manuscrito conjunto para publicación en revista indexada JCR/Scopus.
               </p>
-              <ul class="timeline-syllabus">
-                <li>Aplicación de operadores neuronales a datos hidrológicos de la cuenca del Canal de Panamá o simulación atómica de semiconductores.</li>
-                <li>Definición y desarrollo de temas de tesis de Licenciatura en Física para los miembros fundadores.</li>
-                <li>Preparación y postulación de proyectos a las convocatorias de fomento a I+D de SENACYT.</li>
+              <ul class="deliverables-list">
+                <li>Envío de al menos dos propuestas de investigación a fondos SENACYT.</li>
+                <li>Envío de preprint formal a repositorios abiertos (arXiv).</li>
+                <li>Formalización de convenios de pasantía y vinculación con centros de investigación.</li>
               </ul>
-              <div style="font-size:0.85rem; color:var(--slate); font-family:var(--font-mono);">
-                Meta entregable: Borrador de artículo científico (preprint) y propuesta formal para SENACYT.
-              </div>
             </div>
-          </div>
+          </article>
 
+          <!-- Fase 4 -->
+          <article class="timeline-phase">
+            <div class="phase-badge-wrap">
+              <span class="phase-period">Meses 10 — 12</span>
+              <span class="phase-name">Fase 4: Consolidación</span>
+              <span class="badge badge-navy">Institucional</span>
+            </div>
+            <div class="phase-content">
+              <h3>Consolidación, Simposio Nacional y Nueva Convocatoria</h3>
+              <p>
+                Evaluación anual del plan de trabajo, defensa de tesis de pregrado asociadas al grupo y organización del <em>1er Simposio de Física y Aprendizaje Automático de Panamá</em>. Lanzamiento de la segunda convocatoria de ingreso.
+              </p>
+              <ul class="deliverables-list">
+                <li>Sustentación de las primeras tesis de grado orientadas en el semillero GIFAA.</li>
+                <li>Organización del simposio anual con invitados internacionales.</li>
+                <li>Publicación del informe formal de gestión del grupo ante FACINET.</li>
+              </ul>
+            </div>
+          </article>
         </div>
 
-        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 28px; text-align: center; margin-top: 20px;">
-          <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Seminarios Internos &amp; Journal Clubs</h3>
-          <p style="font-size: 0.94rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 20px;">
-            De forma paralela, el grupo realiza sesiones quincenales de lectura crítica de artículos recientes de <em>Nature Machine Intelligence</em>, <em>Journal of Computational Physics</em> y <em>NeurIPS</em>.
+        <div class="quote-box" style="margin-top: 50px;">
+          <h3 style="margin-bottom: 8px;">Compromiso con el rigor y la transparencia</h3>
+          <p style="margin-bottom: 14px;">
+            Este plan de trabajo está alineado con la normativa de investigación de la Universidad de Panamá y la Agenda Nacional de Inteligencia Artificial (IA 2036).
           </p>
-          <a href="contactanos.html" class="btn btn-secondary">Participar como Oyente</a>
+          <a href="ingresar.html" class="btn btn-primary">Participar en la Convocatoria →</a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- ==========================================================================
-       FOOTER FORMAL INSTITUCIONAL
+       FOOTER INSTITUCIONAL
        ========================================================================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
           <a href="index.html" class="footer-brand">
-            <div class="nav-isotipo" style="width:40px; height:40px;">
-              <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
-                <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
-                <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
-                <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
-                <g stroke="#0A2A5C" stroke-width="3">
-                  <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-                  <circle cx="120" cy="54" r="9" fill="#005293"/>
-                  <circle cx="120" cy="96" r="9" fill="#005293"/>
-                  <circle cx="120" cy="144" r="9" fill="#005293"/>
-                  <circle cx="120" cy="186" r="9" fill="#005293"/>
-                  <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="188" cy="120" r="9" fill="#D21034"/>
-                  <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
-                </g>
-              </svg>
+            <div class="nav-isotipo" style="width: 40px; height: 40px;">
+              <svg viewBox="0 0 240 240" fill="none"><path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10"/><path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10"/></svg>
             </div>
             <span class="footer-brand-title">GIFAA</span>
           </a>
-          <p class="footer-desc">
-            Grupo de Investigación en Física y Aprendizaje Automático. Adscrito al Departamento de Física, Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.
-          </p>
-          <div class="brand-bars">
-            <span class="bar-red"></span>
-            <span class="bar-blue"></span>
-          </div>
+          <p class="footer-desc">Grupo de Investigación en Física y Aprendizaje Automático adscrito al Departamento de Física de la Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.</p>
+          <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
         </div>
-
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h4>Portal</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Inicio</a></li>
             <li><a href="quienes-somos.html">Quiénes somos</a></li>
             <li><a href="investigaciones.html">Investigaciones</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="roadmap.html">Roadmap de 12 meses</a></li>
+            <li><a href="blog.html">Blog &amp; Comunicados</a></li>
+            <li><a href="ingresar.html">Convocatoria &amp; Ingreso</a></li>
             <li><a href="contactanos.html">Contáctanos</a></li>
-            <li><a href="ingresar.html">Ingresar</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Investigación</h4>
+          <h4>Enlaces Institucionales</h4>
           <ul class="footer-links">
-            <li><a href="investigaciones.html#pinns">Physics-Informed ML</a></li>
-            <li><a href="investigaciones.html#fno">Operadores Neuronales</a></li>
-            <li><a href="investigaciones.html#mace">Grafos Equivariantes</a></li>
-            <li><a href="investigaciones.html#hidrologia">Cuenca del Canal</a></li>
-            <li><a href="investigaciones.html#politicas">Políticas Públicas IA</a></li>
+            <li><a href="https://up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
+            <li><a href="https://facinet.up.ac.pa" target="_blank" rel="noopener">FACINET · UP</a></li>
+            <li><a href="https://senacyt.gob.pa" target="_blank" rel="noopener">SENACYT</a></li>
+            <li><a href="https://github.com/gifaaup" target="_blank" rel="noopener">GitHub Oficial</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Institucional</h4>
-          <ul class="footer-links">
-            <li><a href="https://www.up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
-            <li><a href="https://facenat.up.ac.pa" target="_blank" rel="noopener">FACENAT</a></li>
-            <li><a href="quienes-somos.html#requisitos">Reglamento C.I.6-19</a></li>
-            <li><a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener">Comunidad WhatsApp</a></li>
-          </ul>
+          <h4>Comunidad</h4>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">Únete al grupo de mensajería para seguir los avances:</p>
+          <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="font-size:0.85rem; padding:8px 16px;">
+            Unirme por WhatsApp
+          </a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>
-          © 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático. Universidad de Panamá.
-        </div>
-        <div>
-          Campus Central Octavio Méndez Pereira · Ciudad de Panamá
-        </div>
+        <span>© 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático · Universidad de Panamá</span>
+        <span>Campus Octavio Méndez Pereira · Ciudad de Panamá</span>
       </div>
     </div>
   </footer>
 
-  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Unirse al grupo de WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Comunidad de WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
   </a>
 
   <script src="js/main.js"></script>

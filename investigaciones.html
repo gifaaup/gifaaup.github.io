@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Investigaciones — GIFAA | Universidad de Panamá</title>
-  <meta name="description" content="Líneas de investigación científica de GIFAA: PINNs, operadores neuronales FNO/DeepONet, hidrología del Canal, potenciales equivariantes MACE/Allegro y alineación con IA 2036 Panamá.">
+  <meta name="description" content="Líneas de investigación en Scientific Machine Learning, Physics-Informed Neural Networks (PINNs), operadores neuronales y dinámica hídrica en la Universidad de Panamá.">
 
+  <!-- Tipografía oficial Space Grotesk, Inter y JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,93 +15,58 @@
   <style>
     .research-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 36px;
     }
     .research-card {
-      background: #FFFFFF;
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 36px;
+      border-radius: 18px;
+      padding: 32px;
       box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
       transition: all 0.3s ease;
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 30px;
+      position: relative;
     }
     .research-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-hover);
       border-color: rgba(10, 42, 92, 0.25);
     }
-    .research-icon-box {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      background: var(--navy-light);
-      display: grid;
-      place-items: center;
-      color: var(--navy);
-      border: 1px solid rgba(10, 42, 92, 0.12);
-      flex-shrink: 0;
+    .research-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--crimson);
+      font-weight: 700;
+      margin-bottom: 12px;
     }
-    .research-content h3 {
+    .research-card h3 {
       font-size: 1.35rem;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .research-tags {
+    .research-card p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .tech-pill-wrap {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 12px 0 16px;
-    }
-    .research-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-    .research-impact {
-      background: var(--bg-subtle);
-      border-left: 3px solid var(--blue);
-      padding: 12px 18px;
-      border-radius: 0 10px 10px 0;
-      font-size: 0.9rem;
-      color: var(--navy);
-    }
-    .policy-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
-    }
-    .policy-box {
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 24px;
-    }
-    .policy-box .idx {
-      font-family: var(--font-brand);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--crimson);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    @media (max-width: 768px) {
-      .research-card {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
     }
   </style>
 </head>
 <body>
 
   <!-- ==========================================================================
-       BARRA DE NAVEGACIÓN SUPERIOR (new-brand-start.png)
+       BARRA DE NAVEGACIÓN SUPERIOR
        ========================================================================== -->
   <header class="site-header">
     <div class="nav-pill-wrapper">
@@ -112,16 +78,7 @@
             <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
             <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
             <g stroke="#0A2A5C" stroke-width="3">
-              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-              <circle cx="120" cy="54" r="9" fill="#005293"/>
-              <circle cx="120" cy="96" r="9" fill="#005293"/>
-              <circle cx="120" cy="144" r="9" fill="#005293"/>
-              <circle cx="120" cy="186" r="9" fill="#005293"/>
-              <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="188" cy="120" r="9" fill="#D21034"/>
-              <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/><circle cx="52" cy="120" r="9" fill="#FFFFFF"/><circle cx="52" cy="160" r="9" fill="#FFFFFF"/><circle cx="120" cy="54" r="9" fill="#005293"/><circle cx="120" cy="96" r="9" fill="#005293"/><circle cx="120" cy="144" r="9" fill="#005293"/><circle cx="120" cy="186" r="9" fill="#005293"/><circle cx="188" cy="80" r="9" fill="#FFFFFF"/><circle cx="188" cy="120" r="9" fill="#D21034"/><circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
             </g>
           </svg>
         </div>
@@ -131,26 +88,26 @@
         </div>
       </a>
 
-      <nav aria-label="Menú principal">
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="quienes-somos.html" class="nav-link">Quiénes somos</a></li>
-          <li class="nav-item"><a href="investigaciones.html" class="nav-link active">Investigaciones</a></li>
-          <li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contactanos.html" class="nav-link">Contáctanos</a></li>
-          <li class="nav-item">
-            <a href="ingresar.html" class="nav-btn-ingresar">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-              Ingresar
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <!-- Menú Desktop -->
+      <div class="nav-menu-wrap">
+        <nav aria-label="Menú principal">
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="quienes-somos.html" class="nav-link">Quiénes somos</a></li>
+            <li class="nav-item"><a href="investigaciones.html" class="nav-link active">Investigaciones</a></li>
+            <li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="ingresar.html" class="nav-link">Ingresar</a></li>
+            <li class="nav-item"><a href="contactanos.html" class="nav-link">Contáctanos</a></li>
+          </ul>
+        </nav>
+
+        <button class="theme-toggle-btn" aria-label="Cambiar tema">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
       <div class="mobile-nav" id="mobileNav">
@@ -159,274 +116,188 @@
           <li><a href="investigaciones.html" class="mobile-nav-link active">Investigaciones</a></li>
           <li><a href="roadmap.html" class="mobile-nav-link">Roadmap</a></li>
           <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+          <li><a href="ingresar.html" class="mobile-nav-link">Ingresar</a></li>
           <li><a href="contactanos.html" class="mobile-nav-link">Contáctanos</a></li>
-          <li><a href="ingresar.html" class="mobile-nav-link" style="color:var(--crimson); font-weight:700;">Ingresar al Portal</a></li>
         </ul>
+        <div class="mobile-nav-footer">
+          <span style="font-size:0.85rem; color:var(--text-muted);">Tema visual</span>
+          <button class="theme-toggle-btn" aria-label="Cambiar tema">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ==========================================================================
-       CABECERA DE PÁGINA
+       HERO DE INVESTIGACIONES
        ========================================================================== -->
   <main>
     <section class="page-hero">
       <div class="container">
-        <div class="section-eyebrow">Producción &amp; Líneas Científicas</div>
+        <div class="section-eyebrow">Scientific Machine Learning</div>
         <h1 class="section-title">Líneas de Investigación</h1>
-        <div class="brand-bars">
-          <span class="bar-red"></span>
-          <span class="bar-blue"></span>
-        </div>
-        <p class="section-lead">
-          Desarrollamos modelos en la frontera del <em>Scientific Machine Learning</em>, resolviendo ecuaciones diferenciales con restricciones físicas continuas y acelerando simulaciones críticas para Panamá.
-        </p>
+        <p class="section-lead">Desarrollamos soluciones computacionales de alta fidelidad donde las leyes fundamentales de conservación guían el entrenamiento de redes neuronales profundas y operadores matemáticos continuos.</p>
+        <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-       LÍNEAS DE INVESTIGACIÓN PRINCIPALES
-       ========================================================================== -->
     <section class="page-section" style="padding-top: 0;">
       <div class="container">
+        <!-- Grid de las 4 Grandes Líneas -->
         <div class="research-grid">
-
-          <!-- Línea 1 -->
-          <article class="research-card" id="pinns">
-            <div class="research-icon-box">
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="13" y2="13"/></svg>
-            </div>
-            <div class="research-content">
-              <span class="badge badge-crimson">Línea 01 · Fundamentos Teóricos</span>
-              <h3>Redes Neuronales Basadas en la Física (PINNs)</h3>
-              <div class="research-tags">
-                <span class="badge badge-navy">Physics-Informed ML</span>
-                <span class="badge badge-blue">Navier-Stokes</span>
-                <span class="badge badge-navy">Ecuaciones de Burgers</span>
-                <span class="badge badge-crimson">DeepXDE · PyTorch</span>
-              </div>
-              <p class="research-desc">
-                Las PINNs incorporan las leyes de la física (representadas formalmente mediante operadores diferenciales parciales no lineales) directamente en la función de pérdida (<em>loss function</em>) de la red neuronal mediante diferenciación automática. Esto elimina la necesidad de gigantescos volúmenes de datos experimentales y asegura que las soluciones no violen principios físicos universales como la conservación de masa, momento y energía.
-              </p>
-              <div class="research-impact">
-                <strong>Impacto Científico:</strong> Resolución de problemas inversos donde solo se dispone de datos dispersos e incompletos de sensores o estaciones meteorológicas.
-              </div>
+          <!-- Línea 1: PINNs -->
+          <article class="research-card">
+            <span class="research-tag">LÍNEA 01 · FÍSICA INFORMADA</span>
+            <h3>Physics-Informed Neural Networks (PINNs)</h3>
+            <p>
+              Resolución numérica sin malla (mesh-free) de ecuaciones diferenciales en derivadas parciales (EDPs). Integramos el residuo de las leyes físicas directamente en la función de pérdida mediante diferenciación automática en PyTorch y JAX, garantizando soluciones que obedecen principios de conservación.
+            </p>
+            <div class="tech-pill-wrap">
+              <span class="badge badge-navy">PyTorch</span>
+              <span class="badge badge-crimson">DeepXDE</span>
+              <span class="badge badge-blue">Navier-Stokes</span>
+              <span class="badge badge-navy">JAX Autograd</span>
             </div>
           </article>
 
-          <!-- Línea 2 -->
-          <article class="research-card" id="fno">
-            <div class="research-icon-box">
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <div class="research-content">
-              <span class="badge badge-blue">Línea 02 · Hidrología &amp; Clima</span>
-              <h3>Operadores Neuronales en Hidrología y la Cuenca del Canal</h3>
-              <div class="research-tags">
-                <span class="badge badge-blue">Fourier Neural Operator (FNO)</span>
-                <span class="badge badge-navy">DeepONet</span>
-                <span class="badge badge-crimson">Shallow Water Equations</span>
-                <span class="badge badge-navy">Canal de Panamá · CITEC</span>
-              </div>
-              <p class="research-desc">
-                A diferencia de las redes tradicionales que aprenden funciones entre espacios de dimensión finita, los Operadores Neuronales (FNO y DeepONet) aprenden aplicaciones entre espacios funcionales de dimensión infinita. Son invariantes a la discretización de la malla y actúan como <em>modelos sustitutos (surrogates)</em> capaces de simular escorrentías e inundaciones en la cuenca hidrográfica del Canal de Panamá miles de veces más rápido que los métodos de elementos o volúmenes finitos.
-              </p>
-              <div class="research-impact">
-                <strong>Impacto Nacional:</strong> Evaluación en tiempo casi instantáneo de múltiples escenarios climáticos extremos para salvaguardar el suministro de agua potable y el tránsito interoceánico.
-              </div>
+          <!-- Línea 2: Hidrología y Cuenca del Canal -->
+          <article class="research-card">
+            <span class="research-tag">LÍNEA 02 · RECURSOS HÍDRICOS</span>
+            <h3>Modelación Hidrológica de la Cuenca del Canal</h3>
+            <p>
+              Desarrollo de modelos sustitutos ultrarrápidos para la predicción de escorrentía, niveles de embalse (Gatún y Alhajuela) y dinámicas de intrusión salina. Acoplamos ecuaciones hidrodinámicas de aguas someras (Saint-Venant) con datos de telemetría y pluviometría histórica.
+            </p>
+            <div class="tech-pill-wrap">
+              <span class="badge badge-blue">Aguas Someras</span>
+              <span class="badge badge-navy">Telemetría ACP</span>
+              <span class="badge badge-crimson">Operadores Neuronales</span>
             </div>
           </article>
 
-          <!-- Línea 3 -->
-          <article class="research-card" id="mace">
-            <div class="research-icon-box">
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M10.5 13.5 6.5 17.5M17.5 6.5l-4 4"/></svg>
-            </div>
-            <div class="research-content">
-              <span class="badge badge-navy">Línea 03 · Estado Sólido &amp; Materiales</span>
-              <h3>ML Equivariante para Semiconductores y Microelectrónica</h3>
-              <div class="research-tags">
-                <span class="badge badge-crimson">MACE · Allegro</span>
-                <span class="badge badge-blue">E(3)-Equivariance</span>
-                <span class="badge badge-navy">Dinámica Molecular Cuántica</span>
-                <span class="badge badge-navy">Cadena Global Semiconductores</span>
-              </div>
-              <p class="research-desc">
-                Panamá impulsa su inserción en la cadena global de semiconductores (ensamblaje, empaquetado avanzado y prueba). Esta línea implementa potenciales interatómicos con redes neuronales de grafos que respetan simetrías euclidianas 3D (rotaciones, traslaciones e inversiones). Permite simular millones de átomos con exactitud cercana a DFT (<em>Density Functional Theory</em>) para optimizar la disipación térmica y el rendimiento de nuevos materiales conductores.
-              </p>
-              <div class="research-impact">
-                <strong>Impacto Estratégico:</strong> Investigación avanzada en microelectrónica alineada con las metas de atracción de inversión tecnológica de alta densidad en el istmo.
-              </div>
+          <!-- Línea 3: CFD y Operadores Continuos -->
+          <article class="research-card">
+            <span class="research-tag">LÍNEA 03 · FLUIDOS &amp; LOGÍSTICA</span>
+            <h3>CFD Acelerado y Fourier Neural Operators (FNO)</h3>
+            <p>
+              Simulación de flujos turbulentos y aerodinámica en tiempo real para optimización de maniobras marítimas e interacción buque-canal. Los operadores neuronales aprenden el mapeo funcional continuo independiente de la resolución de la malla, reduciendo tiempos de cómputo de horas a milisegundos.
+            </p>
+            <div class="tech-pill-wrap">
+              <span class="badge badge-crimson">Fourier Neural Operators</span>
+              <span class="badge badge-blue">DeepONet</span>
+              <span class="badge badge-navy">OpenFOAM Bridge</span>
             </div>
           </article>
 
-          <!-- Línea 4 -->
-          <article class="research-card" id="biomed">
-            <div class="research-icon-box">
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            </div>
-            <div class="research-content">
-              <span class="badge badge-crimson">Línea 04 · Biomedicina &amp; Altas Energías</span>
-              <h3>Biofísica Computacional y Simulación de Partículas</h3>
-              <div class="research-tags">
-                <span class="badge badge-navy">INDICASAT AIP</span>
-                <span class="badge badge-blue">Descubrimiento de Fármacos</span>
-                <span class="badge badge-crimson">Física de Altas Energías</span>
-                <span class="badge badge-navy">Interacción Proteína-Ligando</span>
-              </div>
-              <p class="research-desc">
-                Modelado de moléculas bioactivas extraídas de la biodiversidad panameña mediante arquitecturas equivariantes para el diseño y cribado de fármacos contra enfermedades tropicales (en sinergia con centros como INDICASAT AIP). En física de partículas, aplicación de técnicas de inferencia y reducción de dimensionalidad en datos de detectores.
-              </p>
-              <div class="research-impact">
-                <strong>Impacto Científico:</strong> Aceleración del cribado computacional para la medicina y la biología molecular en Panamá.
-              </div>
+          <!-- Línea 4: Semiconductores y Materiales -->
+          <article class="research-card">
+            <span class="research-tag">LÍNEA 04 · MATERIA CONDENSADA</span>
+            <h3>Materiales, Semiconductores y Redes Equivariantes</h3>
+            <p>
+              Modelado interatómico a escala nanométrica utilizando redes neuronales equivariantes bajo simetrías de rotación y traslación $E(3)$ (MACE y Allegro). Estudio de propiedades térmicas, transporte de electrones y nuevos materiales para el ecosistema regional de microelectrónica.
+            </p>
+            <div class="tech-pill-wrap">
+              <span class="badge badge-navy">MACE</span>
+              <span class="badge badge-crimson">Simetrías E(3)</span>
+              <span class="badge badge-blue">DFT Híbrido</span>
+              <span class="badge badge-navy">ASE</span>
             </div>
           </article>
-
         </div>
-      </div>
-    </section>
 
-    <!-- ==========================================================================
-       ALINEACIÓN CON POLÍTICAS PÚBLICAS (IA 2036)
-       ========================================================================== -->
-    <section class="page-section" style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);" id="politicas">
-      <div class="container">
-        <div class="section-eyebrow">Alineación Gubernamental</div>
-        <h2 class="section-title">Sinergia con la Estrategia Nacional de IA (IA 2036)</h2>
-        <p class="section-lead">
-          Nuestras investigaciones responden directamente a los lineamientos emitidos por el Consejo de Gabinete, SENACYT, la Autoridad Nacional para la Innovación Gubernamental (AIG) y Georgia Tech Panamá.
-        </p>
-
-        <div class="policy-grid">
-          <div class="policy-box">
-            <div class="idx">01</div>
-            <h4 style="font-size:1.05rem; margin-bottom:8px;">Hub Regional Confiable</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
-              Prioriza el desarrollo de soluciones de IA aplicadas a infraestructura crítica nacional: gestión hídrica, logística portuaria y transición energética.
-            </p>
-          </div>
-
-          <div class="policy-box">
-            <div class="idx">02</div>
-            <h4 style="font-size:1.05rem; margin-bottom:8px;">Gobernanza y Explicabilidad</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
-              Supera el problema de la <em>caja negra</em>: al imponer leyes de conservación, se previene que los modelos generen alucinaciones físicas o resultados incompatibles con la realidad.
-            </p>
-          </div>
-
-          <div class="policy-box">
-            <div class="idx">03</div>
-            <h4 style="font-size:1.05rem; margin-bottom:8px;">Sostenibilidad Computacional</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
-              Los modelos guiados por física requieren órdenes de magnitud menos datos y menor consumo energético que los grandes modelos LLM masivos, adaptándose a la capacidad de clústeres locales como INDICATIC AIP.
-            </p>
-          </div>
-
-          <div class="policy-box">
-            <div class="idx">04</div>
-            <h4 style="font-size:1.05rem; margin-bottom:8px;">Formación de Alto Nivel</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">
-              Crea una cantera de científicos panameños especializados en cálculo diferencial, métodos numéricos y machine learning capaces de competir globalmente.
-            </p>
+        <!-- Stack Tecnológico Formal -->
+        <div class="card-formal" style="margin-top: 50px;">
+          <div class="section-eyebrow">Entorno Computacional</div>
+          <h2 style="font-size: 1.5rem; margin-bottom: 16px;">Stack Científico y Metodológico</h2>
+          <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
+            En GIFAA trabajamos exclusivamente con bibliotecas de código abierto revisadas por pares, priorizando la reproducibilidad matemática de cada experimento:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            <div>
+              <strong style="color:var(--navy);">Lógica &amp; Cómputo Tensorial:</strong>
+              <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Python 3.11+, PyTorch 2.x, JAX / Flax, NumPy y SciPy.</p>
+            </div>
+            <div>
+              <strong style="color:var(--navy);">Physics-Informed ML:</strong>
+              <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">DeepXDE, Modulus (NVIDIA), NeuralPDE (Julia) y TensorDiffEq.</p>
+            </div>
+            <div>
+              <strong style="color:var(--navy);">Modelado Molecular:</strong>
+              <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">ASE (Atomic Simulation Environment), MACE, Allegro y PyG.</p>
+            </div>
+            <div>
+              <strong style="color:var(--navy);">Infraestructura &amp; Datos:</strong>
+              <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Git, GitHub Actions, JupyterLab, DVC y servidores GPU institucionales.</p>
+            </div>
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 40px;">
-          <a href="roadmap.html" class="btn btn-primary">Revisar el Plan Formativo →</a>
-          <a href="blog.html" class="btn btn-secondary" style="margin-left: 12px;">Leer Artículos del Blog</a>
+        <!-- Convocatorias SENACYT y Proyectos -->
+        <div class="quote-box" style="margin-top: 40px;">
+          <h3 style="margin-bottom: 8px;">Apalancamiento de Fondos Públicos (SENACYT)</h3>
+          <p style="margin-bottom: 14px;">
+            Las líneas de investigación de GIFAA están formuladas en estricta conformidad con las prioridades nacionales de I+D de SENACYT y la Estrategia Nacional de Inteligencia Artificial (IA 2036).
+          </p>
+          <a href="roadmap.html" class="btn btn-secondary">Ver el Roadmap de Proyectos →</a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- ==========================================================================
-       FOOTER FORMAL INSTITUCIONAL
+       FOOTER INSTITUCIONAL
        ========================================================================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
           <a href="index.html" class="footer-brand">
-            <div class="nav-isotipo" style="width:40px; height:40px;">
-              <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
-                <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
-                <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
-                <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
-                <g stroke="#0A2A5C" stroke-width="3">
-                  <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-                  <circle cx="120" cy="54" r="9" fill="#005293"/>
-                  <circle cx="120" cy="96" r="9" fill="#005293"/>
-                  <circle cx="120" cy="144" r="9" fill="#005293"/>
-                  <circle cx="120" cy="186" r="9" fill="#005293"/>
-                  <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="188" cy="120" r="9" fill="#D21034"/>
-                  <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
-                </g>
-              </svg>
+            <div class="nav-isotipo" style="width: 40px; height: 40px;">
+              <svg viewBox="0 0 240 240" fill="none"><path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10"/><path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10"/></svg>
             </div>
             <span class="footer-brand-title">GIFAA</span>
           </a>
-          <p class="footer-desc">
-            Grupo de Investigación en Física y Aprendizaje Automático. Adscrito al Departamento de Física, Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.
-          </p>
-          <div class="brand-bars">
-            <span class="bar-red"></span>
-            <span class="bar-blue"></span>
-          </div>
+          <p class="footer-desc">Grupo de Investigación en Física y Aprendizaje Automático adscrito al Departamento de Física de la Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.</p>
+          <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
         </div>
-
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h4>Portal</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Inicio</a></li>
             <li><a href="quienes-somos.html">Quiénes somos</a></li>
             <li><a href="investigaciones.html">Investigaciones</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="roadmap.html">Roadmap de 12 meses</a></li>
+            <li><a href="blog.html">Blog &amp; Comunicados</a></li>
+            <li><a href="ingresar.html">Convocatoria &amp; Ingreso</a></li>
             <li><a href="contactanos.html">Contáctanos</a></li>
-            <li><a href="ingresar.html">Ingresar</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Investigación</h4>
+          <h4>Enlaces Institucionales</h4>
           <ul class="footer-links">
-            <li><a href="investigaciones.html#pinns">Physics-Informed ML</a></li>
-            <li><a href="investigaciones.html#fno">Operadores Neuronales</a></li>
-            <li><a href="investigaciones.html#mace">Grafos Equivariantes</a></li>
-            <li><a href="investigaciones.html#hidrologia">Cuenca del Canal</a></li>
-            <li><a href="investigaciones.html#politicas">Políticas Públicas IA</a></li>
+            <li><a href="https://up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
+            <li><a href="https://facinet.up.ac.pa" target="_blank" rel="noopener">FACINET · UP</a></li>
+            <li><a href="https://senacyt.gob.pa" target="_blank" rel="noopener">SENACYT</a></li>
+            <li><a href="https://github.com/gifaaup" target="_blank" rel="noopener">GitHub Oficial</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Institucional</h4>
-          <ul class="footer-links">
-            <li><a href="https://www.up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
-            <li><a href="https://facenat.up.ac.pa" target="_blank" rel="noopener">FACENAT</a></li>
-            <li><a href="quienes-somos.html#requisitos">Reglamento C.I.6-19</a></li>
-            <li><a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener">Comunidad WhatsApp</a></li>
-          </ul>
+          <h4>Comunidad</h4>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">Participa en nuestras sesiones técnicas:</p>
+          <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="font-size:0.85rem; padding:8px 16px;">
+            Unirme por WhatsApp
+          </a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>
-          © 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático. Universidad de Panamá.
-        </div>
-        <div>
-          Campus Central Octavio Méndez Pereira · Ciudad de Panamá
-        </div>
+        <span>© 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático · Universidad de Panamá</span>
+        <span>Campus Octavio Méndez Pereira · Ciudad de Panamá</span>
       </div>
     </div>
   </footer>
 
-  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Unirse al grupo de WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Comunidad de WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
   </a>
 
   <script src="js/main.js"></script>

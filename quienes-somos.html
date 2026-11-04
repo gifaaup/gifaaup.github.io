@@ -3,106 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quiénes somos — GIFAA | Universidad de Panamá</title>
-  <meta name="description" content="Misión, visión, marco normativo y equipo fundador del Grupo de Investigación en Física y Aprendizaje Automático (GIFAA) de la Universidad de Panamá.">
+  <title>Quiénes Somos — GIFAA | Universidad de Panamá</title>
+  <meta name="description" content="Misión, visión, objetivos institucionales y equipo fundador del Grupo de Investigación en Física y Aprendizaje Automático (GIFAA) en la Universidad de Panamá.">
 
+  <!-- Tipografía oficial Space Grotesk, Inter y JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/main.css">
   <style>
-    .grid-identity {
+    .members-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      margin-bottom: 40px;
-    }
-    .grid-team {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-      margin-top: 24px;
+      margin-top: 30px;
     }
     .member-card {
-      background: #FFFFFF;
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 26px;
       box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
+      gap: 12px;
+      transition: all 0.3s ease;
     }
     .member-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(10, 42, 92, 0.2);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(10, 42, 92, 0.25);
     }
     .member-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
       background: var(--navy-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--navy);
-      display: grid;
-      place-items: center;
       font-family: var(--font-brand);
-      font-size: 1.15rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      margin-bottom: 16px;
-      border: 1px solid rgba(10, 42, 92, 0.1);
-    }
-    .member-avatar.highlight {
-      background: var(--grad-navy);
-      color: #FFFFFF;
+      border: 2px solid var(--border-subtle);
     }
     .member-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 4px;
+      font-size: 1.25rem;
+      margin: 0;
     }
     .member-role {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--crimson);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 12px;
     }
-    .member-meta {
-      font-size: 0.88rem;
+    .member-affiliation {
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.5;
-    }
-    .req-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-    .req-item {
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 20px 22px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .req-num {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--crimson);
-      background: var(--crimson-light);
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
     }
   </style>
 </head>
@@ -121,16 +82,7 @@
             <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
             <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
             <g stroke="#0A2A5C" stroke-width="3">
-              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-              <circle cx="120" cy="54" r="9" fill="#005293"/>
-              <circle cx="120" cy="96" r="9" fill="#005293"/>
-              <circle cx="120" cy="144" r="9" fill="#005293"/>
-              <circle cx="120" cy="186" r="9" fill="#005293"/>
-              <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="188" cy="120" r="9" fill="#D21034"/>
-              <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/><circle cx="52" cy="120" r="9" fill="#FFFFFF"/><circle cx="52" cy="160" r="9" fill="#FFFFFF"/><circle cx="120" cy="54" r="9" fill="#005293"/><circle cx="120" cy="96" r="9" fill="#005293"/><circle cx="120" cy="144" r="9" fill="#005293"/><circle cx="120" cy="186" r="9" fill="#005293"/><circle cx="188" cy="80" r="9" fill="#FFFFFF"/><circle cx="188" cy="120" r="9" fill="#D21034"/><circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
             </g>
           </svg>
         </div>
@@ -140,26 +92,26 @@
         </div>
       </a>
 
-      <nav aria-label="Menú principal">
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="quienes-somos.html" class="nav-link active">Quiénes somos</a></li>
-          <li class="nav-item"><a href="investigaciones.html" class="nav-link">Investigaciones</a></li>
-          <li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contactanos.html" class="nav-link">Contáctanos</a></li>
-          <li class="nav-item">
-            <a href="ingresar.html" class="nav-btn-ingresar">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-              Ingresar
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <!-- Menú Desktop -->
+      <div class="nav-menu-wrap">
+        <nav aria-label="Menú principal">
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="quienes-somos.html" class="nav-link active">Quiénes somos</a></li>
+            <li class="nav-item"><a href="investigaciones.html" class="nav-link">Investigaciones</a></li>
+            <li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="ingresar.html" class="nav-link">Ingresar</a></li>
+            <li class="nav-item"><a href="contactanos.html" class="nav-link">Contáctanos</a></li>
+          </ul>
+        </nav>
+
+        <button class="theme-toggle-btn" aria-label="Cambiar tema">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
       <div class="mobile-nav" id="mobileNav">
@@ -168,303 +120,191 @@
           <li><a href="investigaciones.html" class="mobile-nav-link">Investigaciones</a></li>
           <li><a href="roadmap.html" class="mobile-nav-link">Roadmap</a></li>
           <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+          <li><a href="ingresar.html" class="mobile-nav-link">Ingresar</a></li>
           <li><a href="contactanos.html" class="mobile-nav-link">Contáctanos</a></li>
-          <li><a href="ingresar.html" class="mobile-nav-link" style="color:var(--crimson); font-weight:700;">Ingresar al Portal</a></li>
         </ul>
+        <div class="mobile-nav-footer">
+          <span style="font-size:0.85rem; color:var(--text-muted);">Tema visual</span>
+          <button class="theme-toggle-btn" aria-label="Cambiar tema">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ==========================================================================
-       CABECERA DE PÁGINA
+       CONTENIDO INSTITUCIONAL
        ========================================================================== -->
   <main>
     <section class="page-hero">
       <div class="container">
-        <div class="section-eyebrow">Identidad Institucional</div>
+        <div class="section-eyebrow">Marco Institucional</div>
         <h1 class="section-title">Quiénes Somos</h1>
-        <div class="brand-bars">
-          <span class="bar-red"></span>
-          <span class="bar-blue"></span>
-        </div>
-        <p class="section-lead">
-          Conozca la misión, visión, marco reglamentario y el equipo fundador del Grupo de Investigación en Física y Aprendizaje Automático de la Universidad de Panamá.
-        </p>
+        <p class="section-lead">El Grupo de Investigación en Física y Aprendizaje Automático (GIFAA) es la unidad de investigación adscrita al Departamento de Física de la Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá, comprometida con la frontera científica del cómputo cuántico y neuronal.</p>
+        <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-       IDENTIDAD Y MISIÓN / VISIÓN
-       ========================================================================== -->
     <section class="page-section" style="padding-top: 0;">
       <div class="container">
-        <div class="grid-identity">
-          <div class="card-formal">
-            <span class="badge badge-navy" style="margin-bottom:12px; align-self:flex-start;">Nombre Oficial</span>
-            <h3 style="font-size:1.15rem; margin-bottom:8px;">Grupo de Investigación en Física y Aprendizaje Automático</h3>
-            <p style="font-size:0.92rem; color:var(--text-muted);">Acrónimo institucional registrado: <strong>GIFAA</strong>.</p>
-          </div>
-
-          <div class="card-formal">
-            <span class="badge badge-blue" style="margin-bottom:12px; align-self:flex-start;">Adscripción Académica</span>
-            <h3 style="font-size:1.15rem; margin-bottom:8px;">Facultad de Ciencias Naturales, Exactas y Tecnología</h3>
-            <p style="font-size:0.92rem; color:var(--text-muted);">Departamento de Física · Universidad de Panamá · Campus Octavio Méndez Pereira.</p>
-          </div>
-
-          <div class="card-formal">
-            <span class="badge badge-crimson" style="margin-bottom:12px; align-self:flex-start;">Marco Jurídico</span>
-            <h3 style="font-size:1.15rem; margin-bottom:8px;">Reglamento C.I.6-19</h3>
-            <p style="font-size:0.92rem; color:var(--text-muted);">Aprobado por el Consejo de Investigación en reunión del 21 de junio de 2019.</p>
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 50px;">
-          <div class="card-formal" style="border-left: 4px solid var(--crimson);">
-            <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--crimson);">Misión</h3>
-            <p style="font-size: 0.96rem; color: var(--text-main); line-height: 1.7;">
-              Ofrecer el mejor espacio para estudiantes, docentes e investigadores con el interés común de realizar avances académicos y tecnológicos en la intersección entre el aprendizaje automático (<em>machine learning</em>) y la física, formando talento calificado para el país.
-            </p>
-          </div>
-
-          <div class="card-formal" style="border-left: 4px solid var(--blue);">
-            <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--blue);">Visión</h3>
-            <p style="font-size: 0.96rem; color: var(--text-main); line-height: 1.7;">
-              Ser la referencia académica regional e internacional en materia de <em>machine learning</em> aplicado a la física y viceversa, desarrollando modelos computacionales confiables y tecnologías punteras con rigor matemático.
-            </p>
-          </div>
-
-          <div class="card-formal" style="border-left: 4px solid var(--navy);">
-            <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--navy);">Objetivo General</h3>
-            <p style="font-size: 0.96rem; color: var(--text-main); line-height: 1.7;">
-              Aprovechar el auge de la inteligencia artificial como área prioritaria en la República de Panamá para desarrollar tecnologías e investigaciones innovadoras que contribuyan al posicionamiento de Panamá como <em>Hub de Innovación y Conocimiento</em> en la región.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-       EQUIPO FUNDADOR Y CONFORMACIÓN
-       ========================================================================== -->
-    <section class="page-section" style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
-      <div class="container">
-        <div class="section-eyebrow">Capital Humano</div>
-        <h2 class="section-title">Composición y Equipo Fundador</h2>
-        <p class="section-lead">
-          El grupo fue concebido por estudiantes destacados de la Licenciatura en Física de la Universidad de Panamá, con la visión de crear un semillero de investigación de excelencia.
-        </p>
-
-        <div class="grid-team">
-          <div class="member-card">
-            <div class="member-avatar highlight">DM</div>
-            <h3 class="member-name">Daniel Humberto Morales Jaén</h3>
-            <span class="member-role">Miembro Fundador</span>
-            <div class="member-meta">
-              <strong>Grado:</strong> Licenciatura en Física<br>
-              <strong>Institución:</strong> Universidad de Panamá<br>
-              <strong>Áreas:</strong> Physics-Informed ML, Operadores Neuronales
+        <!-- Ficha de Registro Institucional -->
+        <div class="card-formal" style="margin-bottom: 40px; border-left: 6px solid var(--navy);">
+          <div class="section-eyebrow" style="margin-bottom: 8px;">Datos Registrales UP</div>
+          <h2 style="font-size: 1.5rem; margin-bottom: 16px;">Identidad Orgánica del Grupo</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; font-size: 0.95rem;">
+            <div>
+              <strong style="color:var(--navy);">Nombre Oficial:</strong><br>
+              <span style="color:var(--text-muted);">Grupo de Investigación en Física y Aprendizaje Automático</span>
             </div>
-          </div>
-
-          <div class="member-card">
-            <div class="member-avatar">GJ</div>
-            <h3 class="member-name">Gamal Jeridini</h3>
-            <span class="member-role">Miembro Fundador</span>
-            <div class="member-meta">
-              <strong>Grado:</strong> Licenciatura en Física<br>
-              <strong>Institución:</strong> Universidad de Panamá<br>
-              <strong>Áreas:</strong> Métodos Matemáticos, Simulación Numérica
+            <div>
+              <strong style="color:var(--navy);">Acrónimo Oficial:</strong><br>
+              <span style="color:var(--crimson); font-family:var(--font-brand); font-weight:700;">GIFAA</span>
             </div>
-          </div>
-
-          <div class="member-card">
-            <div class="member-avatar">BP</div>
-            <h3 class="member-name">Brissa Pérez</h3>
-            <span class="member-role">Miembro Fundadora</span>
-            <div class="member-meta">
-              <strong>Grado:</strong> Licenciatura en Física<br>
-              <strong>Institución:</strong> Universidad de Panamá<br>
-              <strong>Áreas:</strong> Física Computacional, Dinámica de Datos
+            <div>
+              <strong style="color:var(--navy);">Unidad Académica:</strong><br>
+              <span style="color:var(--text-muted);">Departamento de Física · FACINET</span>
             </div>
-          </div>
-
-          <div class="member-card">
-            <div class="member-avatar">JA</div>
-            <h3 class="member-name">Julissa Aguilar</h3>
-            <span class="member-role">Miembro Fundadora</span>
-            <div class="member-meta">
-              <strong>Grado:</strong> Licenciatura en Física<br>
-              <strong>Institución:</strong> Universidad de Panamá<br>
-              <strong>Áreas:</strong> Física Teórica, Algoritmos Científicos
+            <div>
+              <strong style="color:var(--navy);">Institución Matriz:</strong><br>
+              <span style="color:var(--text-muted);">Universidad de Panamá (Campus Central)</span>
             </div>
           </div>
         </div>
 
-        <div style="margin-top: 36px; padding: 22px 28px; background: var(--navy-light); border-radius: 14px; border-left: 4px solid var(--navy);">
-          <h4 style="font-size: 1.05rem; margin-bottom: 6px; color: var(--navy);">Coordinación Docente: En Proceso de Formalización</h4>
-          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
-            De acuerdo con el Reglamento de Grupos de Investigación de la UP, el grupo se encuentra en proceso de vinculación y nombramiento del profesor coordinador del Departamento de Física que liderará institucionalmente la ruta de investigación formal ante la Vicerrectoría de Investigación y Postgrado (VIP).
+        <!-- Misión, Visión y Objetivos -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-bottom: 50px;">
+          <div class="card-formal">
+            <span class="badge badge-crimson" style="align-self: flex-start; margin-bottom: 14px;">Misión</span>
+            <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Propósito Fundamental</h3>
+            <p style="color: var(--text-muted); font-size: 0.96rem; line-height: 1.7;">
+              Generar conocimiento científico de frontera integrando principios físicos rigurosos con algoritmos de aprendizaje automático para resolver problemas complejos de interés nacional e internacional, impulsando la formación de capital humano altamente capacitado en la Universidad de Panamá.
+            </p>
+          </div>
+
+          <div class="card-formal">
+            <span class="badge badge-blue" style="align-self: flex-start; margin-bottom: 14px;">Visión</span>
+            <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Proyección al 2030</h3>
+            <p style="color: var(--text-muted); font-size: 0.96rem; line-height: 1.7;">
+              Consolidarse como el referente nacional e internacional de la región centroamericana y el Caribe en <em>Scientific Machine Learning</em>, física computacional y modelado informed-AI, contribuyendo decisivamente al desarrollo soberano y sostenible de Panamá.
+            </p>
+          </div>
+        </div>
+
+        <!-- Objetivo General y Específicos -->
+        <div class="card-formal" style="margin-bottom: 50px;">
+          <h3 style="font-size: 1.35rem; margin-bottom: 16px;">Objetivos Estratégicos</h3>
+          <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+            <strong>Objetivo General:</strong> Desarrollar, implementar y validar modelos de aprendizaje automático informados por la física (PINNs, operadores neuronales y potenciales interatómicos) orientados a la predicción de sistemas físicos, dinámica hídrica, microelectrónica y optimización energética.
           </p>
+          <ul style="color: var(--text-muted); padding-left: 20px; line-height: 1.8; font-size: 0.95rem;">
+            <li>Formar a la próxima generación de físicos computacionales y científicos de datos con bases teóricas sólidas.</li>
+            <li>Publicar artículos científicos en revistas indexadas de alto impacto (JCR/Scopus) y congresos internacionales.</li>
+            <li>Establecer vínculos interinstitucionales con entidades rectoras (SENACYT, Autoridad del Canal de Panamá, centros de salud).</li>
+            <li>Fomentar la cultura de reproducibilidad computacional y código abierto bajo licencias académicas permisivas.</li>
+          </ul>
         </div>
-      </div>
-    </section>
 
-    <!-- ==========================================================================
-       REQUISITOS DE MEMBRESÍA (Artículos 6 y 8)
-       ========================================================================== -->
-    <section class="page-section" id="requisitos">
-      <div class="container">
-        <div class="section-eyebrow">Admisión &amp; Reglamento</div>
-        <h2 class="section-title">Requisitos Mínimos para Nuevos Miembros</h2>
-        <p class="section-lead">
-          Para garantizar la calidad académica y la rigurosidad científica, los aspirantes deben cumplir con los siguientes criterios formales:
-        </p>
+        <!-- Equipo Fundador y Directiva -->
+        <div>
+          <div class="section-eyebrow">Composición Académica</div>
+          <h2 class="section-title">Equipo Directivo e Investigadores</h2>
+          <p class="section-lead">El grupo integra docentes investigadores, colaboradores científicos y coordinadores del semillero estudiantil.</p>
 
-        <div class="req-grid">
-          <div class="req-item">
-            <span class="req-num">1</span>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:4px;">Reglamento UP (Artículo 6)</h4>
-              <p style="font-size:0.88rem; color:var(--text-muted);">Cumplir con las disposiciones del Reglamento de Grupos de Investigación (Aprobado en Consejo de Investigación, C.I.6-19 del 21 de junio de 2019).</p>
+          <div class="members-grid">
+            <div class="member-card">
+              <div class="member-avatar">DM</div>
+              <div>
+                <h3 class="member-name">Daniel Morales</h3>
+                <span class="member-role">Coordinador Principal · Fundador</span>
+              </div>
+              <p class="member-affiliation">Investigador en Física Computacional y Scientific Machine Learning. Especialista en operadores neuronales y arquitecturas tensoriales en PyTorch y JAX.</p>
             </div>
-          </div>
 
-          <div class="req-item">
-            <span class="req-num">2</span>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:4px;">Solicitud Formal (Artículo 8)</h4>
-              <p style="font-size:0.88rem; color:var(--text-muted);">Presentar solicitud escrita a la coordinación. Dicha solicitud será sometida a consideración y consenso de los miembros actuales.</p>
+            <div class="member-card">
+              <div class="member-avatar">DF</div>
+              <div>
+                <h3 class="member-name">Comité de Dirección Académica</h3>
+                <span class="member-role">Departamento de Física · UP</span>
+              </div>
+              <p class="member-affiliation">Cuerpo colegiado de docentes investigadores del Departamento de Física encargados del acompañamiento curricular, acreditación institucional y seminarios.</p>
             </div>
-          </div>
 
-          <div class="req-item">
-            <span class="req-num">3</span>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:4px;">Acuerdo de Confidencialidad</h4>
-              <p style="font-size:0.88rem; color:var(--text-muted);">Firmar el acuerdo formal de confidencialidad y código de ética de investigación científica de la Universidad de Panamá.</p>
-            </div>
-          </div>
-
-          <div class="req-item">
-            <span class="req-num">4</span>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:4px;">Bases Matemáticas Sólidas</h4>
-              <p style="font-size:0.88rem; color:var(--text-muted);">Dominio comprobado de Cálculo (Diferencial e Integral), Álgebra Lineal y Ecuaciones Diferenciales Ordinarias.</p>
-            </div>
-          </div>
-
-          <div class="req-item">
-            <span class="req-num">5</span>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:4px;">Fundamentos de Física</h4>
-              <p style="font-size:0.88rem; color:var(--text-muted);">Conocimientos en materias de primer y segundo año de la Licenciatura en Física (Mecánica clásica, Ondas, Termodinámica y Electromagnetismo).</p>
-            </div>
-          </div>
-
-          <div class="req-item">
-            <span class="req-num">6</span>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:4px;">Programación Científica</h4>
-              <p style="font-size:0.88rem; color:var(--text-muted);">Conocimientos en Python o C++, librerías numéricas (NumPy, SciPy) y disposición para aprender PyTorch, JAX y DeepXDE.</p>
+            <div class="member-card">
+              <div class="member-avatar">SI</div>
+              <div>
+                <h3 class="member-name">Semillero Estudiantil GIFAA</h3>
+                <span class="member-role">Pregrado y Postgrado</span>
+              </div>
+              <p class="member-affiliation">Estudiantes destacados de las licenciaturas en Física, Matemáticas, Ingeniería y Ciencias de la Computación que desarrollan tesis y proyectos formativos.</p>
             </div>
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 40px;">
-          <a href="contactanos.html" class="btn btn-primary">Iniciar Proceso de Solicitud →</a>
-          <a href="roadmap.html" class="btn btn-secondary" style="margin-left: 12px;">Consultar Roadmap Formativo</a>
+        <!-- Llamado a postularse -->
+        <div class="quote-box" style="margin-top: 50px;">
+          <h3 style="margin-bottom: 8px;">¿Deseas formar parte de GIFAA?</h3>
+          <p style="margin-bottom: 14px;">Las convocatorias para semilleristas y tesistas están abiertas para el actual periodo académico.</p>
+          <a href="ingresar.html" class="btn btn-primary">Conocer Requisitos y Postularse →</a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- ==========================================================================
-       FOOTER FORMAL INSTITUCIONAL
+       FOOTER INSTITUCIONAL
        ========================================================================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
           <a href="index.html" class="footer-brand">
-            <div class="nav-isotipo" style="width:40px; height:40px;">
-              <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
-                <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
-                <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
-                <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
-                <g stroke="#0A2A5C" stroke-width="3">
-                  <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-                  <circle cx="120" cy="54" r="9" fill="#005293"/>
-                  <circle cx="120" cy="96" r="9" fill="#005293"/>
-                  <circle cx="120" cy="144" r="9" fill="#005293"/>
-                  <circle cx="120" cy="186" r="9" fill="#005293"/>
-                  <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="188" cy="120" r="9" fill="#D21034"/>
-                  <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
-                </g>
-              </svg>
+            <div class="nav-isotipo" style="width: 40px; height: 40px;">
+              <svg viewBox="0 0 240 240" fill="none"><path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10"/><path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10"/></svg>
             </div>
             <span class="footer-brand-title">GIFAA</span>
           </a>
-          <p class="footer-desc">
-            Grupo de Investigación en Física y Aprendizaje Automático. Adscrito al Departamento de Física, Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.
-          </p>
-          <div class="brand-bars">
-            <span class="bar-red"></span>
-            <span class="bar-blue"></span>
-          </div>
+          <p class="footer-desc">Grupo de Investigación en Física y Aprendizaje Automático adscrito al Departamento de Física de la Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.</p>
+          <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
         </div>
-
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h4>Portal</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Inicio</a></li>
             <li><a href="quienes-somos.html">Quiénes somos</a></li>
             <li><a href="investigaciones.html">Investigaciones</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="roadmap.html">Roadmap de 12 meses</a></li>
+            <li><a href="blog.html">Blog &amp; Comunicados</a></li>
+            <li><a href="ingresar.html">Convocatoria &amp; Ingreso</a></li>
             <li><a href="contactanos.html">Contáctanos</a></li>
-            <li><a href="ingresar.html">Ingresar</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Investigación</h4>
+          <h4>Enlaces Institucionales</h4>
           <ul class="footer-links">
-            <li><a href="investigaciones.html#pinns">Physics-Informed ML</a></li>
-            <li><a href="investigaciones.html#fno">Operadores Neuronales</a></li>
-            <li><a href="investigaciones.html#mace">Grafos Equivariantes</a></li>
-            <li><a href="investigaciones.html#hidrologia">Cuenca del Canal</a></li>
-            <li><a href="investigaciones.html#politicas">Políticas Públicas IA</a></li>
+            <li><a href="https://up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
+            <li><a href="https://facinet.up.ac.pa" target="_blank" rel="noopener">FACINET · UP</a></li>
+            <li><a href="https://senacyt.gob.pa" target="_blank" rel="noopener">SENACYT</a></li>
+            <li><a href="https://github.com/gifaaup" target="_blank" rel="noopener">GitHub Oficial</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Institucional</h4>
-          <ul class="footer-links">
-            <li><a href="https://www.up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
-            <li><a href="https://facenat.up.ac.pa" target="_blank" rel="noopener">FACENAT</a></li>
-            <li><a href="quienes-somos.html#requisitos">Reglamento C.I.6-19</a></li>
-            <li><a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener">Comunidad WhatsApp</a></li>
-          </ul>
+          <h4>Comunidad</h4>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">Participa en nuestras sesiones abiertas y semillero:</p>
+          <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="font-size:0.85rem; padding:8px 16px;">
+            Unirme por WhatsApp
+          </a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>
-          © 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático. Universidad de Panamá.
-        </div>
-        <div>
-          Campus Central Octavio Méndez Pereira · Ciudad de Panamá
-        </div>
+        <span>© 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático · Universidad de Panamá</span>
+        <span>Campus Octavio Méndez Pereira · Ciudad de Panamá</span>
       </div>
     </div>
   </footer>
 
-  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Unirse al grupo de WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Comunidad de WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
   </a>
 
   <script src="js/main.js"></script>

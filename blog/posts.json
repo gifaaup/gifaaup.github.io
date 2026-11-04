@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "id": "post-001",
+      "slug": "lanzamiento-gifaa",
+      "title": "Lanzamiento oficial de GIFAA en la Universidad de Panamá",
+      "date": "2026-11-04",
+      "author": "Dirección Colegiada GIFAA",
+      "category": "Institucional",
+      "summary": "Nace el primer grupo de investigación de la Universidad de Panamá especializado en la convergencia de la física teórica y experimental con el aprendizaje automático moderno.",
+      "file": "posts/lanzamiento-gifaa.md",
+      "readingTime": "4 min"
+    },
+    {
+      "id": "post-002",
+      "slug": "introduccion-pinns",
+      "title": "Redes Neuronales Informadas por la Física (PINNs): De Navier-Stokes al Cómputo Moderno",
+      "date": "2026-10-28",
+      "author": "Equipo de Física Computacional",
+      "category": "Investigación",
+      "summary": "Una exploración pedagógica de cómo la diferenciación automática en PyTorch y JAX permite incrustar principios físicos y leyes de conservación en arquitecturas neuronales profundas.",
+      "file": "posts/introduccion-pinns.md",
+      "readingTime": "7 min"
+    },
+    {
+      "id": "post-003",
+      "slug": "estrategia-ia-2036",
+      "title": "Panamá ante la Estrategia IA 2036: Física, Modelos de Operadores y Soberanía Científica",
+      "date": "2026-10-15",
+      "author": "Comité Científico",
+      "category": "Políticas Públicas",
+      "summary": "Reflexiones sobre el rol que juega el modelado riguroso y la IA explicable frente a los desafíos críticos de Panamá: gestión hídrica del Canal, transición energética y formación de talento.",
+      "file": "posts/estrategia-ia-2036.md",
+      "readingTime": "5 min"
+    }
+  ]
+}

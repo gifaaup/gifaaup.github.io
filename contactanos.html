@@ -4,34 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contáctanos — GIFAA | Universidad de Panamá</title>
-  <meta name="description" content="Canales de contacto y vinculación con el Grupo de Investigación en Física y Aprendizaje Automático (GIFAA) de la Universidad de Panamá.">
+  <meta name="description" content="Canales de contacto oficial, ubicación en el Campus Central de la Universidad de Panamá y enlace a la comunidad de WhatsApp del grupo GIFAA.">
 
+  <!-- Tipografía oficial Space Grotesk, Inter y JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/main.css">
   <style>
-    .contact-grid {
+    .contact-layout {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 40px;
       margin-top: 30px;
     }
-    .form-box {
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 36px;
-      box-shadow: var(--shadow-sm);
-    }
     .form-group {
       margin-bottom: 20px;
     }
-    .form-label {
+    .form-group label {
       display: block;
       font-family: var(--font-brand);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--navy);
       margin-bottom: 8px;
@@ -44,56 +38,37 @@
       font-family: var(--font-body);
       font-size: 0.95rem;
       color: var(--text-main);
-      background: var(--bg-page);
-      transition: all 0.2s;
+      background: var(--bg-surface);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .form-control:focus {
       outline: none;
       border-color: var(--blue);
-      background: #FFFFFF;
-      box-shadow: 0 0 0 3px rgba(0, 82, 147, 0.15);
+      box-shadow: 0 0 0 3px rgba(0, 82, 147, 0.12);
     }
-    textarea.form-control {
-      min-height: 120px;
-      resize: vertical;
-    }
-    .info-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .info-item {
+    .info-card-item {
       display: flex;
       gap: 16px;
-      align-items: flex-start;
+      margin-bottom: 24px;
     }
     .info-icon {
       width: 44px;
       height: 44px;
-      border-radius: 12px;
+      border-radius: 10px;
       background: var(--navy-light);
       color: var(--navy);
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
-    .info-detail h4 {
-      font-size: 1rem;
-      margin-bottom: 4px;
-      color: var(--navy);
-    }
-    .info-detail p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+    .info-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
     }
     @media (max-width: 860px) {
-      .contact-grid {
+      .contact-layout {
         grid-template-columns: 1fr;
       }
     }
@@ -102,7 +77,7 @@
 <body>
 
   <!-- ==========================================================================
-       BARRA DE NAVEGACIÓN SUPERIOR (new-brand-start.png)
+       BARRA DE NAVEGACIÓN SUPERIOR
        ========================================================================== -->
   <header class="site-header">
     <div class="nav-pill-wrapper">
@@ -114,16 +89,7 @@
             <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
             <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
             <g stroke="#0A2A5C" stroke-width="3">
-              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-              <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-              <circle cx="120" cy="54" r="9" fill="#005293"/>
-              <circle cx="120" cy="96" r="9" fill="#005293"/>
-              <circle cx="120" cy="144" r="9" fill="#005293"/>
-              <circle cx="120" cy="186" r="9" fill="#005293"/>
-              <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-              <circle cx="188" cy="120" r="9" fill="#D21034"/>
-              <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/><circle cx="52" cy="120" r="9" fill="#FFFFFF"/><circle cx="52" cy="160" r="9" fill="#FFFFFF"/><circle cx="120" cy="54" r="9" fill="#005293"/><circle cx="120" cy="96" r="9" fill="#005293"/><circle cx="120" cy="144" r="9" fill="#005293"/><circle cx="120" cy="186" r="9" fill="#005293"/><circle cx="188" cy="80" r="9" fill="#FFFFFF"/><circle cx="188" cy="120" r="9" fill="#D21034"/><circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
             </g>
           </svg>
         </div>
@@ -133,26 +99,26 @@
         </div>
       </a>
 
-      <nav aria-label="Menú principal">
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="quienes-somos.html" class="nav-link">Quiénes somos</a></li>
-          <li class="nav-item"><a href="investigaciones.html" class="nav-link">Investigaciones</a></li>
-          <li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contactanos.html" class="nav-link active">Contáctanos</a></li>
-          <li class="nav-item">
-            <a href="ingresar.html" class="nav-btn-ingresar">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-              Ingresar
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <!-- Menú Desktop -->
+      <div class="nav-menu-wrap">
+        <nav aria-label="Menú principal">
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="quienes-somos.html" class="nav-link">Quiénes somos</a></li>
+            <li class="nav-item"><a href="investigaciones.html" class="nav-link">Investigaciones</a></li>
+            <li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="ingresar.html" class="nav-link">Ingresar</a></li>
+            <li class="nav-item"><a href="contactanos.html" class="nav-link active">Contáctanos</a></li>
+          </ul>
+        </nav>
+
+        <button class="theme-toggle-btn" aria-label="Cambiar tema">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
       <div class="mobile-nav" id="mobileNav">
@@ -161,213 +127,207 @@
           <li><a href="investigaciones.html" class="mobile-nav-link">Investigaciones</a></li>
           <li><a href="roadmap.html" class="mobile-nav-link">Roadmap</a></li>
           <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+          <li><a href="ingresar.html" class="mobile-nav-link">Ingresar</a></li>
           <li><a href="contactanos.html" class="mobile-nav-link active">Contáctanos</a></li>
-          <li><a href="ingresar.html" class="mobile-nav-link" style="color:var(--crimson); font-weight:700;">Ingresar al Portal</a></li>
         </ul>
+        <div class="mobile-nav-footer">
+          <span style="font-size:0.85rem; color:var(--text-muted);">Tema visual</span>
+          <button class="theme-toggle-btn" aria-label="Cambiar tema">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ==========================================================================
-       CABECERA DE PÁGINA
+       HERO DE CONTACTO
        ========================================================================== -->
   <main>
     <section class="page-hero">
       <div class="container">
-        <div class="section-eyebrow">Vinculación &amp; Comunicación</div>
+        <div class="section-eyebrow">Canales Oficiales</div>
         <h1 class="section-title">Contáctanos</h1>
-        <div class="brand-bars">
-          <span class="bar-red"></span>
-          <span class="bar-blue"></span>
-        </div>
-        <p class="section-lead">
-          ¿Deseas postularte como miembro, proponer una colaboración docente o consultar sobre nuestras investigaciones? Utilice los canales institucionales.
-        </p>
+        <p class="section-lead">Ponte en contacto con la directiva del grupo para consultas académicas, propuestas de colaboración interinstitucional o vinculación con proyectos de investigación.</p>
+        <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-       SECCIÓN DE FORMULARIO E INFORMACIÓN
-       ========================================================================== -->
     <section class="page-section" style="padding-top: 0;">
       <div class="container">
-        <div class="contact-grid">
-
-          <!-- Formulario Formal -->
-          <div class="form-box">
-            <h3 style="font-size: 1.3rem; margin-bottom: 6px;">Formulario Institucional de Contacto</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px;">
-              Su mensaje será canalizado a los miembros del grupo para su pronta evaluación.
+        <div class="contact-layout">
+          <!-- Formulario de Mensaje -->
+          <div class="card-formal">
+            <h2 style="font-size: 1.45rem; margin-bottom: 8px;">Envíanos un Mensaje</h2>
+            <p style="color: var(--text-muted); font-size: 0.94rem; margin-bottom: 24px;">
+              Completa los siguientes campos y nuestro equipo responderá a la brevedad posible.
             </p>
 
-            <form onsubmit="event.preventDefault(); alert('Su solicitud ha sido recibida formalmente. El equipo de GIFAA le responderá a la brevedad.');">
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
               <div class="form-group">
-                <label class="form-label" for="nombre">Nombre completo *</label>
-                <input type="text" id="nombre" class="form-control" placeholder="Ej. Daniel Morales" required>
+                <label for="name">Nombre y Apellido *</label>
+                <input type="text" id="name" class="form-control" placeholder="Ej. Juan Pérez" required>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="email">Correo electrónico institucional *</label>
-                <input type="email" id="email" class="form-control" placeholder="usuario@up.ac.pa" required>
+                <label for="email">Correo Electrónico *</label>
+                <input type="email" id="email" class="form-control" placeholder="nombre@correo.com" required>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="tipo">Tipo de consulta / solicitud *</label>
-                <select id="tipo" class="form-control" required>
-                  <option value="">Seleccione una opción...</option>
-                  <option value="membresia">Solicitud formal de membresía estudiantil (Reglamento UP)</option>
-                  <option value="coordinacion">Propuesta de profesor coordinador / Docente colaborador</option>
-                  <option value="investigacion">Propuesta de investigación conjunta (SENACYT / Institutos)</option>
-                  <option value="tesis">Consulta sobre temas de tesis de grado</option>
-                  <option value="general">Consulta general</option>
-                </select>
+                <label for="affiliation">Filiación / Perfil *</label>
+                <input type="text" id="affiliation" class="form-control" placeholder="Ej. Estudiante de Física UP / Investigador SENACYT" required>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="mensaje">Mensaje o detalle de la propuesta *</label>
-                <textarea id="mensaje" class="form-control" placeholder="Indique brevemente su formación, materias aprobadas y área de interés en física o machine learning..." required></textarea>
+                <label for="subject">Asunto</label>
+                <input type="text" id="subject" class="form-control" placeholder="Motivo de tu consulta">
               </div>
 
-              <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje Formal →</button>
+              <div class="form-group">
+                <label for="message">Mensaje *</label>
+                <textarea id="message" rows="5" class="form-control" placeholder="Escribe aquí tu consulta o propuesta..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Enviar Mensaje Institucional →
+              </button>
+
+              <div id="formFeedback" style="display: none; margin-top: 16px; padding: 12px; border-radius: 8px; font-size: 0.92rem;"></div>
             </form>
           </div>
 
           <!-- Información y Canales Directos -->
-          <div class="info-card">
-            <div>
-              <span class="badge badge-crimson" style="margin-bottom: 12px;">Comunidad Oficial</span>
-              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Grupo de WhatsApp</h3>
-              <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-                Espacio dinámico para estudiantes, aspirantes y entusiastas de la física computacional donde compartimos lecturas, dudas y avisos de reuniones.
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <!-- Tarjeta de WhatsApp Oficial -->
+            <div class="card-formal" style="border-top: 4px solid #25D366;">
+              <h3 style="font-size: 1.25rem; margin-bottom: 10px;">Comunidad Abierta en WhatsApp</h3>
+              <p style="color: var(--text-muted); font-size: 0.93rem; line-height: 1.6; margin-bottom: 18px;">
+                Espacio de intercambio ágil para estudiantes, tesistas y entusiastas de la física computacional y la inteligencia artificial en Panamá.
               </p>
               <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                Unirse a la Comunidad
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Unirme a la Comunidad
               </a>
             </div>
 
-            <div class="info-item">
-              <div class="info-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div class="info-detail">
-                <h4>Sede Académica</h4>
-                <p>
-                  Departamento de Física<br>
-                  Facultad de Ciencias Naturales, Exactas y Tecnología (FACENAT)<br>
-                  Universidad de Panamá<br>
-                  Campus Octavio Méndez Pereira, Ciudad de Panamá
-                </p>
-              </div>
-            </div>
+            <!-- Datos de Ubicación y Contacto -->
+            <div class="card-formal">
+              <h3 style="font-size: 1.25rem; margin-bottom: 18px;">Ubicación &amp; Despacho</h3>
 
-            <div class="info-item">
-              <div class="info-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div class="info-card-item">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <strong style="color:var(--navy);">Sede Principal:</strong>
+                  <p style="color:var(--text-muted); font-size:0.92rem; margin-top:2px;">
+                    Departamento de Física · FACINET<br>
+                    Campus Central Octavio Méndez Pereira<br>
+                    Universidad de Panamá, Ciudad de Panamá
+                  </p>
+                </div>
               </div>
-              <div class="info-detail">
-                <h4>Sesiones y Reuniones</h4>
-                <p>
-                  Seminarios formativos quincenales según calendario del semestre académico regular de la Universidad de Panamá.
-                </p>
+
+              <div class="info-card-item">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <strong style="color:var(--navy);">Correo Electrónico:</strong>
+                  <p style="color:var(--text-muted); font-size:0.92rem; margin-top:2px;">
+                    <a href="mailto:contactardanielmorales@gmail.com" style="color:var(--blue); text-decoration:none;">contactardanielmorales@gmail.com</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-card-item" style="margin-bottom: 0;">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </div>
+                <div>
+                  <strong style="color:var(--navy);">Código Abierto &amp; Modelos:</strong>
+                  <p style="color:var(--text-muted); font-size:0.92rem; margin-top:2px;">
+                    <a href="https://github.com/gifaaup" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none;">github.com/gifaaup</a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   </main>
 
   <!-- ==========================================================================
-       FOOTER FORMAL INSTITUCIONAL
+       FOOTER INSTITUCIONAL
        ========================================================================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
           <a href="index.html" class="footer-brand">
-            <div class="nav-isotipo" style="width:40px; height:40px;">
-              <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
-                <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
-                <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
-                <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
-                <g stroke="#0A2A5C" stroke-width="3">
-                  <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
-                  <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
-                  <circle cx="120" cy="54" r="9" fill="#005293"/>
-                  <circle cx="120" cy="96" r="9" fill="#005293"/>
-                  <circle cx="120" cy="144" r="9" fill="#005293"/>
-                  <circle cx="120" cy="186" r="9" fill="#005293"/>
-                  <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
-                  <circle cx="188" cy="120" r="9" fill="#D21034"/>
-                  <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
-                </g>
-              </svg>
+            <div class="nav-isotipo" style="width: 40px; height: 40px;">
+              <svg viewBox="0 0 240 240" fill="none"><path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10"/><path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10"/></svg>
             </div>
             <span class="footer-brand-title">GIFAA</span>
           </a>
-          <p class="footer-desc">
-            Grupo de Investigación en Física y Aprendizaje Automático. Adscrito al Departamento de Física, Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.
-          </p>
-          <div class="brand-bars">
-            <span class="bar-red"></span>
-            <span class="bar-blue"></span>
-          </div>
+          <p class="footer-desc">Grupo de Investigación en Física y Aprendizaje Automático adscrito al Departamento de Física de la Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.</p>
+          <div class="brand-bars"><span class="bar-red"></span><span class="bar-blue"></span></div>
         </div>
-
         <div class="footer-col">
-          <h4>Navegación</h4>
+          <h4>Portal</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Inicio</a></li>
             <li><a href="quienes-somos.html">Quiénes somos</a></li>
             <li><a href="investigaciones.html">Investigaciones</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="roadmap.html">Roadmap de 12 meses</a></li>
+            <li><a href="blog.html">Blog &amp; Comunicados</a></li>
+            <li><a href="ingresar.html">Convocatoria &amp; Ingreso</a></li>
             <li><a href="contactanos.html">Contáctanos</a></li>
-            <li><a href="ingresar.html">Ingresar</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Investigación</h4>
+          <h4>Enlaces Institucionales</h4>
           <ul class="footer-links">
-            <li><a href="investigaciones.html#pinns">Physics-Informed ML</a></li>
-            <li><a href="investigaciones.html#fno">Operadores Neuronales</a></li>
-            <li><a href="investigaciones.html#mace">Grafos Equivariantes</a></li>
-            <li><a href="investigaciones.html#hidrologia">Cuenca del Canal</a></li>
-            <li><a href="investigaciones.html#politicas">Políticas Públicas IA</a></li>
+            <li><a href="https://up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
+            <li><a href="https://facinet.up.ac.pa" target="_blank" rel="noopener">FACINET · UP</a></li>
+            <li><a href="https://senacyt.gob.pa" target="_blank" rel="noopener">SENACYT</a></li>
+            <li><a href="https://github.com/gifaaup" target="_blank" rel="noopener">GitHub Oficial</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Institucional</h4>
-          <ul class="footer-links">
-            <li><a href="https://www.up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
-            <li><a href="https://facenat.up.ac.pa" target="_blank" rel="noopener">FACENAT</a></li>
-            <li><a href="quienes-somos.html#requisitos">Reglamento C.I.6-19</a></li>
-            <li><a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener">Comunidad WhatsApp</a></li>
-          </ul>
+          <h4>Comunidad</h4>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">Comunícate directamente por mensajería:</p>
+          <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="font-size:0.85rem; padding:8px 16px;">
+            Unirme por WhatsApp
+          </a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>
-          © 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático. Universidad de Panamá.
-        </div>
-        <div>
-          Campus Central Octavio Méndez Pereira · Ciudad de Panamá
-        </div>
+        <span>© 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático · Universidad de Panamá</span>
+        <span>Campus Octavio Méndez Pereira · Ciudad de Panamá</span>
       </div>
     </div>
   </footer>
 
-  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Unirse al grupo de WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Comunidad de WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
   </a>
 
   <script src="js/main.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('formFeedback');
+      const name = document.getElementById('name').value;
+      feedback.style.display = 'block';
+      feedback.style.background = 'var(--navy-light)';
+      feedback.style.color = 'var(--navy)';
+      feedback.style.border = '1px solid var(--border-subtle)';
+      feedback.innerHTML = `<strong>¡Gracias por tu mensaje, ${name}!</strong><br>Tu consulta ha sido registrada formalmente. También puedes unirte a nuestro grupo de WhatsApp para contacto directo.`;
+      document.getElementById('contactForm').reset();
+    }
+  </script>
 </body>
 </html>
