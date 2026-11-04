@@ -1,0 +1,702 @@
+/* ==========================================================================
+   GIFAA — Grupo de Investigación en Física y Aprendizaje Automático
+   Universidad de Panamá · Facultad de Ciencias Naturales, Exactas y Tecnología
+   Hoja de Estilos Formal Institucional
+   ========================================================================== */
+
+:root {
+  /* Paleta oficial logotipo.html */
+  --crimson: #D21034;
+  --crimson-dark: #A90D2A;
+  --crimson-light: #FFF0F2;
+  --navy: #0A2A5C;
+  --navy-dark: #061B3B;
+  --navy-light: #EEF4FA;
+  --blue: #005293;
+  --blue-light: #E6F0FA;
+  --slate: #4A5873;
+  --slate-light: #8E9BAE;
+
+  /* Neutros formales */
+  --bg-page: #FAFAF8;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F4F6F9;
+  --text-main: #0B192C;
+  --text-muted: #4B5A75;
+  --text-subtle: #74839D;
+  --border-subtle: #E2E8F0;
+  --border-focus: #CBD5E1;
+  --wa-green: #25D366;
+  --wa-dark: #128C7E;
+
+  /* Gradiente insignia navbar y acentos (new-brand-start.png) */
+  --grad-brand: linear-gradient(90deg, #D21034 0%, #71406C 48%, #005293 100%);
+  --grad-navy: linear-gradient(135deg, #0A2A5C 0%, #005293 100%);
+  --grad-red: linear-gradient(135deg, #D21034 0%, #9B0D27 100%);
+
+  /* Sombras académicas elegantes */
+  --shadow-sm: 0 1px 3px rgba(10, 42, 92, 0.05), 0 1px 2px rgba(10, 42, 92, 0.04);
+  --shadow-md: 0 4px 14px rgba(10, 42, 92, 0.06), 0 2px 4px rgba(10, 42, 92, 0.03);
+  --shadow-lg: 0 10px 30px rgba(10, 42, 92, 0.08), 0 4px 8px rgba(10, 42, 92, 0.04);
+  --shadow-hover: 0 16px 36px rgba(10, 42, 92, 0.12), 0 6px 12px rgba(10, 42, 92, 0.06);
+
+  /* Tipografía */
+  --font-brand: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Patrón sutil de fondo formal de cuadrícula científica */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(10, 42, 92, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 42, 92, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 82, 147, 0.06), rgba(210, 16, 52, 0.04) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* Contenedores */
+.container {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container-narrow {
+  max-width: 920px;
+}
+
+/* ==========================================================================
+   BARRA SUPERIOR DE NAVEGACIÓN (Basada en new-brand-start.png)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 20px;
+  z-index: 1000;
+  width: 100%;
+  padding: 0 24px;
+  margin-bottom: 24px;
+}
+
+.nav-pill-wrapper {
+  max-width: 1260px;
+  margin: 0 auto;
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 9999px;
+  padding: 6px 14px 6px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 28px rgba(10, 42, 92, 0.09), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Borde continuo con gradiente (rojo a azul) exactamente como en new-brand-start.png */
+.nav-pill-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -3.5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #D21034 0%, #71406C 48%, #005293 100%);
+  z-index: -1;
+}
+
+/* Marca / Isotipo a la izquierda */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 2px 6px 2px 2px;
+  border-radius: 9999px;
+  transition: opacity 0.2s ease;
+}
+
+.nav-brand:hover {
+  opacity: 0.9;
+}
+
+.nav-isotipo {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.nav-isotipo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-brand-title {
+  font-family: var(--font-brand);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.nav-brand-sub {
+  font-family: var(--font-brand);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Menú de enlaces */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 8px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-brand);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--crimson);
+  background: rgba(210, 16, 52, 0.06);
+}
+
+.nav-link.active {
+  color: var(--navy);
+  background: var(--navy-light);
+  font-weight: 600;
+}
+
+/* Botón especial Ingresar */
+.nav-btn-ingresar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-brand);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  background: var(--grad-navy);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(10, 42, 92, 0.25);
+  transition: all 0.25s ease;
+  margin-left: 4px;
+}
+
+.nav-btn-ingresar:hover {
+  background: linear-gradient(135deg, #D21034 0%, #005293 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(210, 16, 52, 0.3);
+}
+
+.nav-btn-ingresar svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+/* Toggle móvil (Hamburguesa) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  transition: background 0.2s ease;
+}
+
+.nav-toggle:hover {
+  background: var(--navy-light);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--navy);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* Drawer móvil */
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 16px 40px rgba(10, 42, 92, 0.15);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.mobile-nav.open {
+  display: block;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav-link {
+  display: block;
+  font-family: var(--font-brand);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.mobile-nav-link:hover, .mobile-nav-link.active {
+  background: var(--navy-light);
+  color: var(--crimson);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   TIPOGRAFÍA Y ENCABEZADOS FORMALES
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-brand);
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 12px;
+}
+
+.section-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--crimson);
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  margin-bottom: 14px;
+  color: var(--navy);
+}
+
+.section-lead {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+/* Barra gemela decorativa (roja y azul) del logotipo oficial */
+.brand-bars {
+  display: inline-flex;
+  gap: 6px;
+  margin: 10px 0 16px;
+}
+
+.bar-red {
+  width: 44px;
+  height: 6px;
+  background: var(--crimson);
+  border-radius: 2px;
+}
+
+.bar-blue {
+  width: 44px;
+  height: 6px;
+  background: var(--blue);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   COMPONENTES UI & TARJETAS FORMALES
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-brand);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(10, 42, 92, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(10, 42, 92, 0.28);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--navy);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  border-color: var(--navy);
+  color: var(--crimson);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-crimson {
+  background: var(--crimson);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(210, 16, 52, 0.22);
+}
+
+.btn-crimson:hover {
+  background: var(--crimson-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(210, 16, 52, 0.32);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  background: #1EBE5A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+}
+
+/* Tarjetas institucionales */
+.card-formal {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-formal:hover {
+  transform: translateY(-5px);
+  border-color: rgba(10, 42, 92, 0.2);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Badges / Etiquetas técnicas */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-navy {
+  background: var(--navy-light);
+  color: var(--navy);
+  border: 1px solid rgba(10, 42, 92, 0.12);
+}
+
+.badge-crimson {
+  background: var(--crimson-light);
+  color: var(--crimson);
+  border: 1px solid rgba(210, 16, 52, 0.15);
+}
+
+.badge-blue {
+  background: var(--blue-light);
+  color: var(--blue);
+  border: 1px solid rgba(0, 82, 147, 0.15);
+}
+
+/* Secciones de contenido */
+.page-section {
+  padding: 70px 0;
+  position: relative;
+}
+
+.page-hero {
+  padding: 50px 0 60px;
+  background: linear-gradient(180deg, rgba(238, 244, 250, 0.5) 0%, rgba(250, 250, 248, 0) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   FOOTER FORMAL INSTITUCIONAL
+   ========================================================================== */
+.site-footer {
+  margin-top: auto;
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-subtle);
+  padding: 60px 0 30px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.footer-brand-title {
+  font-family: var(--font-brand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.footer-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 360px;
+}
+
+.footer-col h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: var(--crimson);
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+
+/* Botón flotante WhatsApp */
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wa-fab:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+}
+
+.wa-fab svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   RESPONSIVIDAD
+   ========================================================================== */
+@media (max-width: 992px) {
+  .nav-menu {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    top: 12px;
+    padding: 0 12px;
+  }
+  .nav-pill-wrapper {
+    padding: 4px 10px;
+  }
+  .nav-brand-title {
+    font-size: 1.1rem;
+  }
+  .nav-brand-sub {
+    display: none;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .section-title {
+    font-size: 1.85rem;
+  }
+}

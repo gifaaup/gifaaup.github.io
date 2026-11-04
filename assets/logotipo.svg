@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" role="img" aria-label="Logotipo GIFAA">
+  <g transform="translate(10, 10)">
+    <!-- Isotipo (scaled to 200x200) -->
+    <g transform="scale(0.8333)">
+      <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" fill="none" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
+      <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" fill="none" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
+      <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" fill="none" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
+      <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" fill="none" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
+      <g stroke="#0A2A5C" stroke-width="3">
+        <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
+        <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
+        <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
+        <circle cx="120" cy="54" r="9" fill="#005293"/>
+        <circle cx="120" cy="96" r="9" fill="#005293"/>
+        <circle cx="120" cy="144" r="9" fill="#005293"/>
+        <circle cx="120" cy="186" r="9" fill="#005293"/>
+        <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
+        <circle cx="188" cy="120" r="9" fill="#D21034"/>
+        <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+      </g>
+    </g>
+    <!-- Text group -->
+    <g transform="translate(230, 20)" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+      <text x="0" y="70" font-size="76" font-weight="700" letter-spacing="4" fill="#0A2A5C">GIFAA</text>
+      <!-- Twin accent bars -->
+      <rect x="2" y="90" width="46" height="6" fill="#D21034" rx="2"/>
+      <rect x="54" y="90" width="46" height="6" fill="#005293" rx="2"/>
+      <text x="2" y="125" font-size="20" font-weight="600" fill="#0A2A5C">Física y Aprendizaje Automático</text>
+      <text x="2" y="152" font-size="12" font-weight="500" letter-spacing="3" fill="#4A5873" text-transform="uppercase">GRUPO DE INVESTIGACIÓN · UNIVERSIDAD DE PANAMÁ</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingresar al Portal — GIFAA | Universidad de Panamá</title>
+  <meta name="description" content="Portal de acceso para miembros, investigadores y colaboradores del Grupo de Investigación en Física y Aprendizaje Automático (GIFAA) de la Universidad de Panamá.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .login-container {
+      max-width: 480px;
+      margin: 40px auto 60px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .login-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .login-isotipo {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+    }
+    .login-isotipo svg {
+      width: 100%;
+      height: 100%;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-family: var(--font-brand);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      background: var(--bg-page);
+      transition: all 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--blue);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(0, 82, 147, 0.15);
+    }
+    .login-footer-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      margin-top: 14px;
+    }
+    .login-footer-links a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .login-footer-links a:hover {
+      text-decoration: underline;
+      color: var(--crimson);
+    }
+    .member-notice {
+      background: var(--navy-light);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 28px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BARRA DE NAVEGACIÓN SUPERIOR (new-brand-start.png)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="nav-pill-wrapper">
+      <a href="index.html" class="nav-brand" title="GIFAA — Inicio">
+        <div class="nav-isotipo">
+          <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Isotipo GIFAA">
+            <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
+            <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
+            <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
+            <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
+            <g stroke="#0A2A5C" stroke-width="3">
+              <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
+              <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
+              <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
+              <circle cx="120" cy="54" r="9" fill="#005293"/>
+              <circle cx="120" cy="96" r="9" fill="#005293"/>
+              <circle cx="120" cy="144" r="9" fill="#005293"/>
+              <circle cx="120" cy="186" r="9" fill="#005293"/>
+              <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
+              <circle cx="188" cy="120" r="9" fill="#D21034"/>
+              <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+            </g>
+          </svg>
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">GIFAA</span>
+          <span class="nav-brand-sub">Física &amp; ML · UP</span>
+        </div>
+      </a>
+
+      <nav aria-label="Menú principal">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="quienes-somos.html" class="nav-link">Quiénes somos</a></li>
+          <li class="nav-item"><a href="investigaciones.html" class="nav-link">Investigaciones</a></li>
+          <li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contactanos.html" class="nav-link">Contáctanos</a></li>
+          <li class="nav-item">
+            <a href="ingresar.html" class="nav-btn-ingresar active">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              Ingresar
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+          <li><a href="quienes-somos.html" class="mobile-nav-link">Quiénes somos</a></li>
+          <li><a href="investigaciones.html" class="mobile-nav-link">Investigaciones</a></li>
+          <li><a href="roadmap.html" class="mobile-nav-link">Roadmap</a></li>
+          <li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+          <li><a href="contactanos.html" class="mobile-nav-link">Contáctanos</a></li>
+          <li><a href="ingresar.html" class="mobile-nav-link active" style="color:var(--crimson); font-weight:700;">Ingresar al Portal</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       FORMULARIO DE ACCESO AL PORTAL
+       ========================================================================== -->
+  <main>
+    <div class="container">
+      <div class="login-container">
+        <div class="login-header">
+          <div class="login-isotipo">
+            <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
+              <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
+              <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
+              <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
+              <g stroke="#0A2A5C" stroke-width="3">
+                <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
+                <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
+                <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
+                <circle cx="120" cy="54" r="9" fill="#005293"/>
+                <circle cx="120" cy="96" r="9" fill="#005293"/>
+                <circle cx="120" cy="144" r="9" fill="#005293"/>
+                <circle cx="120" cy="186" r="9" fill="#005293"/>
+                <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
+                <circle cx="188" cy="120" r="9" fill="#D21034"/>
+                <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+              </g>
+            </svg>
+          </div>
+          <h1 style="font-size: 1.5rem; color: var(--navy); margin-bottom: 4px;">Portal de Miembros</h1>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">GIFAA · Universidad de Panamá</p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Acceso al entorno de intranet académica reservado para miembros registrados. Si no posee cuenta activa, remita su solicitud.');">
+          <div class="form-group">
+            <label class="form-label" for="usuario">Correo Institucional</label>
+            <input type="email" id="usuario" class="form-control" placeholder="nombre.apellido@up.ac.pa" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Contraseña</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+          </div>
+
+          <div class="login-footer-links">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-muted);">
+              <input type="checkbox"> Recordar sesión
+            </label>
+            <a href="#" onclick="alert('Comuníquese con el administrador del grupo para el restablecimiento de su clave.'); return false;">¿Olvidó su contraseña?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 24px;">Iniciar Sesión</button>
+        </form>
+
+        <div class="member-notice">
+          <strong>¿Aún no es miembro?</strong><br>
+          Si es estudiante de la Licenciatura en Física o investigador UP, puede consultar los requisitos según el <a href="quienes-somos.html#requisitos" style="color:var(--crimson); font-weight:600;">Reglamento C.I.6-19</a> o <a href="contactanos.html" style="color:var(--blue); font-weight:600;">solicitar su admisión</a>.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER FORMAL INSTITUCIONAL
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="footer-brand">
+            <div class="nav-isotipo" style="width:40px; height:40px;">
+              <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.8 106.8 A108 108 0 0 1 227.2 106.8" stroke="#D21034" stroke-width="10" stroke-linecap="round"/>
+                <path d="M12.8 133.2 A108 108 0 0 0 227.2 133.2" stroke="#005293" stroke-width="10" stroke-linecap="round"/>
+                <path d="M52 80L120 54M52 80L120 96M52 80L120 144M52 80L120 186M52 120L120 54M52 120L120 96M52 120L120 144M52 120L120 186M52 160L120 54M52 160L120 96M52 160L120 144M52 160L120 186M120 54L188 80M120 54L188 120M120 54L188 160M120 96L188 80M120 96L188 120M120 96L188 160M120 144L188 80M120 144L188 120M120 144L188 160M120 186L188 80M120 186L188 120M120 186L188 160" stroke="#0A2A5C" stroke-width="1" opacity="0.3"/>
+                <path d="M24 120 Q38 76 52 120 T80 120 T108 120 T136 120 T164 120 T192 120 T220 120" stroke="#D21034" stroke-width="3" stroke-linecap="round"/>
+                <g stroke="#0A2A5C" stroke-width="3">
+                  <circle cx="52" cy="80" r="9" fill="#FFFFFF"/>
+                  <circle cx="52" cy="120" r="9" fill="#FFFFFF"/>
+                  <circle cx="52" cy="160" r="9" fill="#FFFFFF"/>
+                  <circle cx="120" cy="54" r="9" fill="#005293"/>
+                  <circle cx="120" cy="96" r="9" fill="#005293"/>
+                  <circle cx="120" cy="144" r="9" fill="#005293"/>
+                  <circle cx="120" cy="186" r="9" fill="#005293"/>
+                  <circle cx="188" cy="80" r="9" fill="#FFFFFF"/>
+                  <circle cx="188" cy="120" r="9" fill="#D21034"/>
+                  <circle cx="188" cy="160" r="9" fill="#FFFFFF"/>
+                </g>
+              </svg>
+            </div>
+            <span class="footer-brand-title">GIFAA</span>
+          </a>
+          <p class="footer-desc">
+            Grupo de Investigación en Física y Aprendizaje Automático. Adscrito al Departamento de Física, Facultad de Ciencias Naturales, Exactas y Tecnología de la Universidad de Panamá.
+          </p>
+          <div class="brand-bars">
+            <span class="bar-red"></span>
+            <span class="bar-blue"></span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="quienes-somos.html">Quiénes somos</a></li>
+            <li><a href="investigaciones.html">Investigaciones</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contactanos.html">Contáctanos</a></li>
+            <li><a href="ingresar.html">Ingresar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Investigación</h4>
+          <ul class="footer-links">
+            <li><a href="investigaciones.html#pinns">Physics-Informed ML</a></li>
+            <li><a href="investigaciones.html#fno">Operadores Neuronales</a></li>
+            <li><a href="investigaciones.html#mace">Grafos Equivariantes</a></li>
+            <li><a href="investigaciones.html#hidrologia">Cuenca del Canal</a></li>
+            <li><a href="investigaciones.html#politicas">Políticas Públicas IA</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.up.ac.pa" target="_blank" rel="noopener">Universidad de Panamá</a></li>
+            <li><a href="https://facenat.up.ac.pa" target="_blank" rel="noopener">FACENAT</a></li>
+            <li><a href="quienes-somos.html#requisitos">Reglamento C.I.6-19</a></li>
+            <li><a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener">Comunidad WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 GIFAA · Grupo de Investigación en Física y Aprendizaje Automático. Universidad de Panamá.
+        </div>
+        <div>
+          Campus Central Octavio Méndez Pereira · Ciudad de Panamá
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://chat.whatsapp.com/LD94SDzFLci3YfK7MPCtoe" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Unirse al grupo de WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
